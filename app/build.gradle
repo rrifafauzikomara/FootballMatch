@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.rifafauzi.footballmatch"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.core:core-ktx:$ktxCore"
+    androidTestImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test:runner:$testVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    implementation "androidx.cardview:cardview:$cardVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.annotation:annotation:$androidXAnnotations"
+
+    implementation "org.jetbrains.anko:anko:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7:$recyclerViewVersion"
+    implementation "org.jetbrains.anko:anko-design:$anko_version"
+
+    // Dependencies for Glide
+    implementation("com.github.bumptech.glide:glide:$glideVersion") {
+        exclude group: "androidx"
+    }
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+}

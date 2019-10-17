@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Football Match</string>
+    <string name="image">Image</string>
+
+    <string-array name="club_name">
+        <item>Barcelona FC</item>
+        <item>Real Madrid FC</item>
+        <item>Bayern Munchen FC</item>
+        <item>Manchester City FC</item>
+        <item>Manchester United FC</item>
+        <item>Chelsea FC</item>
+        <item>AC Milan FC</item>
+        <item>Arsenal FC</item>
+    </string-array>
+
+    <string-array name="club_desc">
+        <item>Founded in 1899 by a group of Swiss, English and Catalan footballers led by Joan Gamper, the club has become a symbol of Catalan culture and Catalanism, hence the motto "Més que un club" ("More than a club"). Unlike many other football clubs, the supporters own and operate Barcelona.</item>
+        <item>Founded on 6 March 1902 as the Madrid Football Club, the club has traditionally worn a white home kit since inception. The word real is Spanish for "royal" and was bestowed to the club by King Alfonso XIII in 1920 together with the royal crown in the emblem.</item>
+        <item>FC Bayern was founded in 1900 by 11 football players, led by Franz John. Although Bayern won its first national championship in 1932, the club was not selected for the Bundesliga at its inception in 1963.</item>
+        <item>Manchester City Football Club, also known simply as City or the Cityzens, is a football club based in east Manchester, England. Founded in 1880 as St. Marks (West Gorton), it became Ardwick Association Football Club in 1887 and Manchester City in 1894. The clubs home ground is the City of Manchester Stadium in east Manchester, to which it moved in 2003, having played at Maine Road since 1923. </item>
+        <item>Manchester United have won more trophies than any other club in English football, with a record 20 League titles, 12 FA Cups, 5 League Cups and a record 21 FA Community Shields. </item>
+        <item>Chelsea won the First Division title in 1955, followed by various cup competitions between 1965 and 1971. The past two decades have seen sustained success, with the club winning 23 trophies since 1997.</item>
+        <item>AC Milan (Italian pronunciation: [assotʃat), commonly referred to as A.C. Milan or simply Milan, is a professional football club in Milan, Italy, founded in 1899.[5][6] The club has spent its entire history, with the exception of the 1980–81 and 1982–83 seasons, in the top flight of Italian football, known as Serie A since 1929–30.</item>
+        <item>Arsenal was the first club from the South of England to join The Football League, in 1893, and they reached the First Division in 1904. Relegated only once, in 1913, they continue the longest streak in the top division, and have won the second-most top-flight matches in English football history.</item>
+    </string-array>
+
+    <array name="club_image">
+        <item>@drawable/img_barca</item>
+        <item>@drawable/img_madrid</item>
+        <item>@drawable/img_bayern</item>
+        <item>@drawable/img_city</item>
+        <item>@drawable/img_mu</item>
+        <item>@drawable/img_chelsea</item>
+        <item>@drawable/img_acm</item>
+        <item>@drawable/img_arsenal</item>
+    </array>
+</resources>
