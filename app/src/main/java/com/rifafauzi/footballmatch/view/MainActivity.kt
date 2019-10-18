@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MainActivityUI().setContentView(this)
+
+        initData()
     }
 
     class MainActivityUI : AnkoComponent<MainActivity> {
@@ -25,10 +27,14 @@ class MainActivity : AppCompatActivity() {
             verticalLayout {
                 padding = dip(16)
                 lparams(matchParent, matchParent)
-                recyclerView {
-                    layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
-                    adapter = ClubsAdapter(context, listClubs)
-                }.lparams(matchParent, matchParent)
+
+                /**
+                 * bug in anko with using androidx
+                 */
+//                recyclerView {
+//                    layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+//                    adapter = ClubsAdapter(context, listClubs)
+//                }.lparams(matchParent, matchParent)
             }
         }
     }
