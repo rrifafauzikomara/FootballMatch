@@ -40,10 +40,6 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.annotation:annotation:$androidXAnnotations"
 
-    implementation "org.jetbrains.anko:anko:$anko_version"
-    implementation "org.jetbrains.anko:anko-recyclerview-v7:$recyclerViewVersion"
-    implementation "org.jetbrains.anko:anko-design:$anko_version"
-
     // Dependencies for Glide
     implementation("com.github.bumptech.glide:glide:$glideVersion") {
         exclude group: "androidx"
