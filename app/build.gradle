@@ -53,6 +53,11 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.annotation:annotation:$androidXAnnotations"
 
+    // Dependencies for Room
+    implementation "androidx.room:room-runtime:$persistence_component_version"
+    implementation "androidx.room:room-coroutines:$persistence_component_version"
+    kapt "androidx.room:room-compiler:$persistence_component_version"
+
     // Dependencies for Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"

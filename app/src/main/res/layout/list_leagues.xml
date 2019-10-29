@@ -4,13 +4,13 @@
 
     <data>
 
-<!--        <variable-->
-<!--            name="data"-->
-<!--            type="com.rifafauzi.footballmatch.model.Leagues" />-->
+        <variable
+            name="data"
+            type="com.rifafauzi.footballmatch.data.local.entity.Leagues" />
 
-<!--        <variable-->
-<!--            name="fragment"-->
-<!--            type="com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment" />-->
+        <variable
+            name="fragment"
+            type="com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment" />
     </data>
 
     <LinearLayout
@@ -26,13 +26,13 @@
             android:src="@drawable/ic_flag"
             android:contentDescription="@string/image" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/name"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            tools:text="@{data.strLeague}" />-->
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            tools:text="@{data.strLeague}" />
 
     </LinearLayout>
 </layout>
