@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="fragment"
             type="com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment" />
@@ -12,6 +14,14 @@
         <variable
             name="vm"
             type="com.rifafauzi.footballmatch.ui.leagues.LeaguesViewModel" />
+
+        <variable
+            name="showLoading"
+            type="Boolean" />
+
+        <variable
+            name="showData"
+            type="Boolean" />
 
     </data>
 
@@ -26,9 +36,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{showData ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/list_leagues" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/shimmer_leagues" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

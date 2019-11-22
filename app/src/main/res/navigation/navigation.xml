@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/leaguesFragment"
         android:name="com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment"
-        android:label="fragment_leagues"
+        android:label="List Leagues"
         tools:layout="@layout/fragment_leagues" />
 
 

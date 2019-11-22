@@ -24,15 +24,15 @@ import javax.inject.Inject
  
 abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var mViewDataBinding: B
     private lateinit var mViewModel: V
     private lateinit var inputMethodManager : InputMethodManager
 
-    private val binding: B
+    val binding: B
         get() = mViewDataBinding
-    private val vm: V
+    val vm: V
         get() = mViewModel
 
     override fun onCreateView(
@@ -40,7 +40,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass())
+        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass())
         mViewDataBinding =
             DataBindingUtil.inflate(inflater, getLayoutResourceId(), container, false)
         mViewDataBinding.lifecycleOwner = this
