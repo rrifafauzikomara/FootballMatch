@@ -42,6 +42,7 @@ dependencies {
 
     // Dependencies for Testing
     implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test:runner:$testVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
@@ -82,6 +83,7 @@ dependencies {
     // Dependencies for Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$logingVersion"
 
     // Timber
@@ -89,4 +91,7 @@ dependencies {
 
     // Shimmer
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+    //Multidex
+    implementation "com.android.support:multidex:$multidex_version"
 }
