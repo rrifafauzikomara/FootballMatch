@@ -50,7 +50,6 @@ class LeaguesViewModel @Inject constructor(private val repository: LeaguesReposi
                 override fun onUnknownError(message: String) {
                     setResultListLeagues(Result.Error(R.string.unknown_error))
                 }
-
             })
     }
 
