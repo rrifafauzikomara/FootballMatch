@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName
 data class LeaguesResponse(
 
     @SerializedName("countrys")
-    val country: List<Leagues>
+    val country: List<Leagues>,
+
+    @SerializedName("leagues")
+    val leagues: List<Leagues>
 
 )

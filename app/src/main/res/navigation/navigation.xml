@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailLeagueFragment"
-        android:name="com.rifafauzi.footballmatch.ui.DetailLeagueFragment"
+        android:name="com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueFragment"
         android:label="Detail League"
         tools:layout="@layout/fragment_detail_league">
 

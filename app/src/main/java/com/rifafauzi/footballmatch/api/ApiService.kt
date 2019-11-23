@@ -14,4 +14,7 @@ interface ApiService {
     @GET("search_all_leagues.php")
     fun getListLeagues(@Query("s") sport: String) : Observable<LeaguesResponse>
 
+    @GET("lookupleague.php")
+    fun getDetailLeague(@Query("id") idLeagues: String) : Observable<LeaguesResponse>
+
 }
