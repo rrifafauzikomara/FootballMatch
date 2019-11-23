@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -20,7 +21,7 @@
             android:id="@+id/image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@{data.strBanner}"
+            app:imageUrl="@{data.strBadge}"
             android:contentDescription="@string/image" />
 
         <TextView

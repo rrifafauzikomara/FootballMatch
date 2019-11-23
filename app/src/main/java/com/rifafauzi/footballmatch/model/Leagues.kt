@@ -9,26 +9,26 @@ import com.google.gson.annotations.SerializedName
 data class Leagues(
 
     @SerializedName("idLeague")
-    val idLeague: String,
+    val idLeague: String?,
 
     @SerializedName("strLeague")
-    val strLeague: String,
+    val strLeague: String?,
 
     @SerializedName("dateFirstEvent")
-    val dateFirstEvent: String,
+    val dateFirstEvent: String?,
 
     @SerializedName("strBanner")
-    val strBanner: String,
+    val strBanner: String?,
 
     @SerializedName("strSport")
-    val strSport: String,
+    val strSport: String?,
 
     @SerializedName("strDescriptionEN")
-    val strDescriptionEN: String,
+    val strDescriptionEN: String?,
 
     @SerializedName("strBadge")
-    val strBadge: String,
+    val strBadge: String?,
 
     @SerializedName("strCountry")
-    val strCountry: String
+    val strCountry: String?
 )
