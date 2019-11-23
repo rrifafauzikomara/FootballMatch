@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class Leagues(
 
     @SerializedName("idLeague")
-    val idLeague: String?,
+    val idLeague: String,
 
     @SerializedName("strLeague")
     val strLeague: String?,

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
@@ -61,6 +62,15 @@ class LeaguesFragment : BaseFragment<FragmentLeaguesBinding, LeaguesViewModel>()
 
     }
 
+    override fun onLeaguesPressed(leagues: Leagues, position: Int) {
+        launchDetailFragment(leagues.idLeague)
+    }
+
+    private fun launchDetailFragment(idLeagues: String) {
+        val action = LeaguesFragmentDirections.actionLaunchDetailLeagueFragment(idLeagues)
+        findNavController().navigate(action)
+    }
+
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(activity)
         binding.rvLeagues.layoutManager = layoutManager
@@ -85,9 +95,6 @@ class LeaguesFragment : BaseFragment<FragmentLeaguesBinding, LeaguesViewModel>()
 
     private fun hideLeagues() {
         binding.showData = false
-    }
-
-    override fun onLeaguesPressed(leagues: Leagues, position: Int) {
     }
 
 }

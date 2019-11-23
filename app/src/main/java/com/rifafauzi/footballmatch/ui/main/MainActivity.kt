@@ -76,7 +76,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     showToolbar(true)
                     showToolbarBackArrow(false)
                 }
-
+                R.id.detailLeagueFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(true)
+                }
                 else -> {
                     showToolbar(false)
                     showToolbarBackArrow(true)
@@ -89,10 +92,14 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             R.id.leaguesFragment -> {
                 finish()
             }
-
             else -> {
                 navController.navigateUp()
             }
         }
+    }
+
+    override fun onSupportNavigateUp() : Boolean {
+        navController.navigateUp()
+        return true
     }
 }
