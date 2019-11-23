@@ -56,6 +56,12 @@ class NextMatchViewModel @Inject constructor(private val repository: MatchReposi
     private fun transformData(data: MatchResponse) : List<Match> {
         val match = mutableListOf<Match>()
 
+        // check if data from api is null
+        if (data.events.isNullOrEmpty()) {
+            setResultMatch(Result.NoData())
+            return mutableListOf()
+        }
+
         for (i in data.events) {
             match.add(
                 Match(
