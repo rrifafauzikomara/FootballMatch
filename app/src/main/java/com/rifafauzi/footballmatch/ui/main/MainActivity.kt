@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setupToolbar()
         setupNavController()
 
-
     }
 
     private fun initMain() {
@@ -77,6 +76,14 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     showToolbarBackArrow(false)
                 }
                 R.id.detailLeagueFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(true)
+                }
+                R.id.nextMatchFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(true)
+                }
+                R.id.previousFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
                 }

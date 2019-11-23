@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
@@ -20,13 +21,14 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
 
     override fun getViewModelClass() = DetailLeagueViewModel::class.java
 
+    private lateinit var idLeague: String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val idLeague = DetailLeagueFragmentArgs.fromBundle(arguments!!).idLeague
+        idLeague = DetailLeagueFragmentArgs.fromBundle(arguments!!).idLeague
 
         vm.getDetailLeague(idLeague)
-
         vm.detailLeague.observe(viewLifecycleOwner, Observer {
             it?.let {
                 when (it) {
@@ -58,6 +60,24 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
             }
         })
 
+    }
+
+    fun onPressedPrevMatch() {
+        launchPreviousMatch()
+    }
+
+    fun onPressedNextMatch() {
+        launchNextMatch()
+    }
+
+    private fun launchNextMatch() {
+        val action = DetailLeagueFragmentDirections.actionLaunchNextMatchFragment(idLeague)
+        findNavController().navigate(action)
+    }
+
+    private fun launchPreviousMatch() {
+        val action = DetailLeagueFragmentDirections.actionLaunchPreviousFragment(idLeague)
+        findNavController().navigate(action)
     }
 
     private fun displayData(data: List<Leagues>) {

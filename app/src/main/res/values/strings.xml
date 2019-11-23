@@ -11,5 +11,7 @@
     <string name="no_data">There are no data found</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next_match">Next Match</string>
+    <string name="previous_match">Previous Match</string>
 
 </resources>

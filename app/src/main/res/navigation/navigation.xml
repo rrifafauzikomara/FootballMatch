@@ -27,7 +27,39 @@
         <argument
             android:name="idLeague"
             app:argType="string" />
+        <action
+            android:id="@+id/actionLaunchNextMatchFragment"
+            app:destination="@id/nextMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/actionLaunchPreviousFragment"
+            app:destination="@id/previousFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
+    </fragment>
+    <fragment
+        android:id="@+id/nextMatchFragment"
+        android:name="com.rifafauzi.footballmatch.NextMatchFragment"
+        android:label="Next Match"
+        tools:layout="@layout/fragment_next_match" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/previousFragment"
+        android:name="com.rifafauzi.footballmatch.PreviousMatchFragment"
+        android:label="Previous Match"
+        tools:layout="@layout/fragment_previous_match" >
+        <argument
+            android:name="idLeague"
+            app:argType="string" />
     </fragment>
 
 </navigation>
