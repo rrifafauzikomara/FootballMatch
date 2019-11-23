@@ -21,24 +21,19 @@
 
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.detailleague.DetailLeagueFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:visibility="@{showData ? View.VISIBLE : View.GONE}"
-            android:layout_height="wrap_content"
-            tools:context=".ui.detailleague.DetailLeagueFragment">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:visibility="@{showData ? View.VISIBLE : View.GONE}"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageDetailLeague"
@@ -49,7 +44,7 @@
                     android:src="@drawable/ic_no_data"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/dateDetailLeague"
@@ -115,6 +110,11 @@
                     tools:text="Description" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerDetailLeague"
@@ -131,6 +131,7 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
