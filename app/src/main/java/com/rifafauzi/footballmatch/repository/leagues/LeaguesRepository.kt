@@ -1,7 +1,7 @@
-package com.rifafauzi.footballmatch.repository
+package com.rifafauzi.footballmatch.repository.leagues
 
 import com.rifafauzi.footballmatch.api.ApiService
-import com.rifafauzi.footballmatch.model.LeaguesResponse
+import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
 import io.reactivex.Observable
 import javax.inject.Inject
 

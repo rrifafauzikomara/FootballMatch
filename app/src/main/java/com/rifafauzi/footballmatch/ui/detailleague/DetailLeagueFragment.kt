@@ -10,7 +10,7 @@ import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentDetailLeagueBinding
-import com.rifafauzi.footballmatch.model.Leagues
+import com.rifafauzi.footballmatch.model.leagues.Leagues
 
 /**
  * A simple [Fragment] subclass.

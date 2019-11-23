@@ -6,9 +6,9 @@ import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseResponse
 import com.rifafauzi.footballmatch.base.BaseViewModel
 import com.rifafauzi.footballmatch.common.Result
-import com.rifafauzi.footballmatch.model.Leagues
-import com.rifafauzi.footballmatch.model.LeaguesResponse
-import com.rifafauzi.footballmatch.repository.LeaguesRepository
+import com.rifafauzi.footballmatch.model.leagues.Leagues
+import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
+import com.rifafauzi.footballmatch.repository.leagues.LeaguesRepository
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

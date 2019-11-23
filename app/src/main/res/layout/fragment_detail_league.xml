@@ -9,7 +9,7 @@
 
         <variable
             name="data"
-            type="com.rifafauzi.footballmatch.model.Leagues" />
+            type="com.rifafauzi.footballmatch.model.leagues.Leagues" />
 
         <variable
             name="fragment"

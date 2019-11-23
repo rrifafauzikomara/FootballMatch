@@ -1,4 +1,4 @@
-package com.rifafauzi.footballmatch.model
+package com.rifafauzi.footballmatch.model.leagues
 
 import com.google.gson.annotations.SerializedName
 

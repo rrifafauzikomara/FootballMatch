@@ -1,7 +1,8 @@
 package com.rifafauzi.footballmatch.di.module
 
 import com.rifafauzi.footballmatch.api.ApiService
-import com.rifafauzi.footballmatch.repository.LeaguesRepository
+import com.rifafauzi.footballmatch.repository.leagues.LeaguesRepository
+import com.rifafauzi.footballmatch.repository.match.MatchRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -15,6 +16,11 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideLeaguesRepository(apiService: ApiService) = LeaguesRepository(apiService)
+    fun provideLeaguesRepository(apiService: ApiService) =
+        LeaguesRepository(apiService)
+
+    @Provides
+    @Singleton
+    fun provideMatchRepository(apiService: ApiService) = MatchRepository(apiService)
 
 }

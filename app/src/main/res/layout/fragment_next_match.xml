@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NextMatchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="fragment"
+            type="com.rifafauzi.footballmatch.ui.nextmatch.NextMatchFragment" />
+
+        <variable
+            name="vm"
+            type="com.rifafauzi.footballmatch.ui.nextmatch.NextMatchViewModel" />
+
+        <variable
+            name="showLoading"
+            type="Boolean" />
+
+        <variable
+            name="showData"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.nextmatch.NextMatchFragment">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNextMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{showData ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/list_match" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerNextMatch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/shimmer_leagues" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

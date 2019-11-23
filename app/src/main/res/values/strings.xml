@@ -13,5 +13,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_match">Next Match</string>
     <string name="previous_match">Previous Match</string>
+    <string name="vs">VS</string>
 
 </resources>

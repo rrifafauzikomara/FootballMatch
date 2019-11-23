@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.rifafauzi.footballmatch.model.Leagues" />
+            type="com.rifafauzi.footballmatch.model.leagues.Leagues" />
 
     </data>
 
@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/image"
@@ -38,8 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:text="@{data.strLeague}"
                 android:layout_gravity="center_vertical"
-                tools:text="@{data.strLeague}" />
+                tools:text="Arsenal" />
 
         </LinearLayout>
 

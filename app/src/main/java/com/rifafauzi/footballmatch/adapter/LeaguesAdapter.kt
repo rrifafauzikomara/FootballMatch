@@ -1,4 +1,4 @@
-package com.rifafauzi.footballmatch.ui.leagues
+package com.rifafauzi.footballmatch.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,13 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rifafauzi.footballmatch.databinding.ListLeaguesBinding
-import com.rifafauzi.footballmatch.model.Leagues
+import com.rifafauzi.footballmatch.model.leagues.Leagues
 
 /**
  * Created by rrifafauzikomara on 2019-11-22.
  */
  
-class LeaguesAdapter (private val listener: OnLeaguesPressedListener) : ListAdapter<Leagues, LeaguesAdapter.ViewHolder>(DiffCallback) {
+class LeaguesAdapter (private val listener: OnLeaguesPressedListener) : ListAdapter<Leagues, LeaguesAdapter.ViewHolder>(
+    DiffCallback
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

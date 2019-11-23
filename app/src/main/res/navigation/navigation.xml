@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/nextMatchFragment"
-        android:name="com.rifafauzi.footballmatch.NextMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.nextmatch.NextMatchFragment"
         android:label="Next Match"
         tools:layout="@layout/fragment_next_match" >
         <argument
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/previousFragment"
-        android:name="com.rifafauzi.footballmatch.PreviousMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.previousmatch.PreviousMatchFragment"
         android:label="Previous Match"
         tools:layout="@layout/fragment_previous_match" >
         <argument

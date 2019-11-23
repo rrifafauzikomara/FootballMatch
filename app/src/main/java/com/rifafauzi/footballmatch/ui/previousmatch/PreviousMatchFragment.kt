@@ -1,85 +1,80 @@
-package com.rifafauzi.footballmatch.ui.leagues
+package com.rifafauzi.footballmatch.ui.previousmatch
 
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.R
-import com.rifafauzi.footballmatch.adapter.LeaguesAdapter
+import com.rifafauzi.footballmatch.adapter.MatchAdapter
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
-import com.rifafauzi.footballmatch.databinding.FragmentLeaguesBinding
-import com.rifafauzi.footballmatch.model.leagues.Leagues
+import com.rifafauzi.footballmatch.databinding.FragmentPreviousMatchBinding
+import com.rifafauzi.footballmatch.model.match.Match
 
 /**
  * A simple [Fragment] subclass.
  */
-class LeaguesFragment : BaseFragment<FragmentLeaguesBinding, LeaguesViewModel>(), LeaguesAdapter.OnLeaguesPressedListener {
+class PreviousMatchFragment : BaseFragment<FragmentPreviousMatchBinding, PreviousMatchViewModel>(), MatchAdapter.OnMatchPressedListener {
 
-    override fun getLayoutResourceId() = R.layout.fragment_leagues
-    override fun getViewModelClass() = LeaguesViewModel::class.java
+    override fun getLayoutResourceId() = R.layout.fragment_previous_match
+    override fun getViewModelClass() = PreviousMatchViewModel::class.java
 
-    private val adapter = LeaguesAdapter(this)
+    private val adapter = MatchAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
 
-        vm.getListLeagues()
-        vm.leagues.observe(viewLifecycleOwner, Observer {
+        val idLeague = PreviousMatchFragmentArgs.fromBundle(arguments!!).idLeague
+
+        vm.getPrevMatch(idLeague)
+        vm.prevMatch.observe(viewLifecycleOwner, Observer {
             it?.let {
                 when (it) {
                     is Result.Loading -> {
-                        hideLeagues()
+                        hidePrevMatch()
                         showLoading()
                     }
                     is Result.HasData -> {
-                        showLeagues()
+                        showPrevMatch()
                         hideLoading()
                         refreshData(it.data)
                     }
                     is Result.NoData -> {
-                        hideLeagues()
+                        hidePrevMatch()
                         hideLoading()
                         longSnackBar("Data not Found")
                     }
                     is Result.Error -> {
-                        hideLeagues()
+                        hidePrevMatch()
                         hideLoading()
                         longSnackBar("Unknown Error")
                     }
                     is Result.NoInternetConnection -> {
-                        hideLeagues()
+                        hidePrevMatch()
                         hideLoading()
                         longSnackBar("No Internet Connection")
                     }
                 }
             }
         })
-
     }
 
-    override fun onLeaguesPressed(leagues: Leagues, position: Int) {
-        launchDetailFragment(leagues.idLeague)
-    }
-
-    private fun launchDetailFragment(idLeagues: String) {
-        val action = LeaguesFragmentDirections.actionLaunchDetailLeagueFragment(idLeagues)
-        findNavController().navigate(action)
+    override fun onMatchPressed(match: Match, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(activity)
-        binding.rvLeagues.layoutManager = layoutManager
-        binding.rvLeagues.adapter = adapter
+        binding.rvPrevMatch.layoutManager = layoutManager
+        binding.rvPrevMatch.adapter = adapter
     }
 
-    private fun refreshData(leagues : List<Leagues>) {
-        adapter.submitList(leagues)
+    private fun refreshData(match : List<Match>) {
+        adapter.submitList(match)
     }
 
     private fun showLoading() {
@@ -90,11 +85,11 @@ class LeaguesFragment : BaseFragment<FragmentLeaguesBinding, LeaguesViewModel>()
         binding.showLoading = false
     }
 
-    private fun showLeagues() {
+    private fun showPrevMatch() {
         binding.showData = true
     }
 
-    private fun hideLeagues() {
+    private fun hidePrevMatch() {
         binding.showData = false
     }
 

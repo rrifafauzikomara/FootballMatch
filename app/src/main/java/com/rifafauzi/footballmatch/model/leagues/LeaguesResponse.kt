@@ -1,6 +1,7 @@
-package com.rifafauzi.footballmatch.model
+package com.rifafauzi.footballmatch.model.leagues
 
 import com.google.gson.annotations.SerializedName
+import com.rifafauzi.footballmatch.model.leagues.Leagues
 
 /**
  * Created by rrifafauzikomara on 2019-11-22.
