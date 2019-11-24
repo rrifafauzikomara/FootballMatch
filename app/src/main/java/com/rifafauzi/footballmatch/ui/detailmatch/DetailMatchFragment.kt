@@ -9,7 +9,6 @@ import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentDetailMatchBinding
-import com.rifafauzi.footballmatch.model.leagues.Leagues
 import com.rifafauzi.footballmatch.model.match.Match
 
 /**
@@ -33,26 +32,26 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
             it?.let {
                 when (it) {
                     is Result.Loading -> {
-                        hideLeagues()
+                        hideMatch()
                         showLoading()
                     }
                     is Result.HasData -> {
-                        showLeagues()
+                        showMatch()
                         hideLoading()
                         displayData(it.data)
                     }
                     is Result.NoData -> {
-                        hideLeagues()
+                        hideMatch()
                         hideLoading()
                         longSnackBar("Data not Found")
                     }
                     is Result.Error -> {
-                        hideLeagues()
+                        hideMatch()
                         hideLoading()
                         longSnackBar("Unknown Error")
                     }
                     is Result.NoInternetConnection -> {
-                        hideLeagues()
+                        hideMatch()
                         hideLoading()
                         longSnackBar("No Internet Connection")
                     }
@@ -73,11 +72,11 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         binding.showLoading = false
     }
 
-    private fun showLeagues() {
+    private fun showMatch() {
         binding.showData = true
     }
 
-    private fun hideLeagues() {
+    private fun hideMatch() {
         binding.showData = false
     }
 }

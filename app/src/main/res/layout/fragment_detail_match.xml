@@ -369,7 +369,7 @@
             android:layout_height="match_parent">
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerDetailLeague"
+                android:id="@+id/shimmerDetailMatch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
