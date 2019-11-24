@@ -7,6 +7,10 @@ import com.google.gson.annotations.SerializedName
  */
  
 data class MatchResponse(
+
     @SerializedName("events")
-    val events: List<Match>
+    val events: List<Match>,
+
+    @SerializedName("event")
+    val search: List<Match>
 )

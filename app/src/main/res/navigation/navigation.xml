@@ -41,6 +41,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/actionLaunchSearchMatchFragment"
+            app:destination="@id/searchMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
     </fragment>
     <fragment
@@ -51,6 +58,13 @@
         <argument
             android:name="idLeague"
             app:argType="string" />
+        <action
+            android:id="@+id/actionNextMatchFragmentToDetailMatchFragment"
+            app:destination="@id/detailMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/previousFragment"
@@ -59,6 +73,35 @@
         tools:layout="@layout/fragment_previous_match" >
         <argument
             android:name="idLeague"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionPreviousFragmentToDetailMatchFragment"
+            app:destination="@id/detailMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.searchmatch.SearchMatchFragment"
+        android:label="fragment_search_match"
+        tools:layout="@layout/fragment_search_match" >
+        <action
+            android:id="@+id/actionSearchMatchFragmentToDetailMatchFragment"
+            app:destination="@id/detailMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.detailmatch.DetailMatchFragment"
+        android:label="fragment_detail_match"
+        tools:layout="@layout/fragment_detail_match" >
+        <argument
+            android:name="idEvent"
             app:argType="string" />
     </fragment>
 

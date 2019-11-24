@@ -3,9 +3,11 @@ package com.rifafauzi.footballmatch.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueViewModel
+import com.rifafauzi.footballmatch.ui.detailmatch.DetailMatchViewModel
 import com.rifafauzi.footballmatch.ui.leagues.LeaguesViewModel
 import com.rifafauzi.footballmatch.ui.nextmatch.NextMatchViewModel
 import com.rifafauzi.footballmatch.ui.previousmatch.PreviousMatchViewModel
+import com.rifafauzi.footballmatch.ui.searchmatch.SearchMatchViewModel
 import com.rifafauzi.footballmatch.utils.ViewModelKey
 import com.rifafauzi.footballmatch.viewmodel.ViewModelFactory
 import dagger.Binds
@@ -41,5 +43,15 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PreviousMatchViewModel::class)
     internal abstract fun providesPreviousMatchViewModel(viewModel: PreviousMatchViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailMatchViewModel::class)
+    internal abstract fun providesDetailMatchViewModel(viewModel: DetailMatchViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchMatchViewModel::class)
+    internal abstract fun providesSearchMatchViewModel(viewModel: SearchMatchViewModel) : ViewModel
 
 }

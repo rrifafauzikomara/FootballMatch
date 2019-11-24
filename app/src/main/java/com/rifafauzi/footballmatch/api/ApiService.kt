@@ -24,4 +24,10 @@ interface ApiService {
     @GET("eventsnextleague.php")
     fun getNextMatch(@Query("id") idLeagues: String) : Observable<MatchResponse>
 
+    @GET("lookupevent.php")
+    fun getDetailMatch(@Query("id") idEvent: String) : Observable<MatchResponse>
+
+    @GET("searchevents.php")
+    fun searchMatch(@Query("e") query: String) : Observable<MatchResponse>
+
 }
