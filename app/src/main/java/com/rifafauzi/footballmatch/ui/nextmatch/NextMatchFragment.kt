@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.adapter.MatchAdapter
@@ -65,7 +66,12 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
     }
 
     override fun onMatchPressed(match: Match, position: Int) {
+        launchDetailMatch(match.idEvent)
+    }
 
+    private fun launchDetailMatch(idEvent: String) {
+        val action = NextMatchFragmentDirections.actionNextMatchFragmentToDetailMatchFragment(idEvent)
+        findNavController().navigate(action)
     }
 
     private fun initRecyclerView() {

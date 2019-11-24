@@ -87,9 +87,17 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     showToolbar(true)
                     showToolbarBackArrow(true)
                 }
+                R.id.detailMatchFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(true)
+                }
+                R.id.searchMatchFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(true)
+                }
                 else -> {
                     showToolbar(false)
-                    showToolbarBackArrow(true)
+                    showToolbarBackArrow(false)
                 }
             }
         }

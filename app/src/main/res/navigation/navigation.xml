@@ -98,7 +98,7 @@
     <fragment
         android:id="@+id/detailMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.detailmatch.DetailMatchFragment"
-        android:label="fragment_detail_match"
+        android:label="Detail Match"
         tools:layout="@layout/fragment_detail_match" >
         <argument
             android:name="idEvent"

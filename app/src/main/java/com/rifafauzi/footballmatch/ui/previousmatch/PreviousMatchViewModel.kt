@@ -70,7 +70,20 @@ class PreviousMatchViewModel @Inject constructor(private val repository: MatchRe
                     i.strAwayTeam,
                     i.dateEvent,
                     i.intHomeScore,
-                    i.intAwayScore
+                    i.intAwayScore,
+                    i.strLeague,
+                    i.strHomeGoalDetails,
+                    i.strAwayGoalDetails,
+                    i.strHomeLineupSubstitutes,
+                    i.strAwayLineupSubstitutes,
+                    i.strHomeLineupGoalkeeper,
+                    i.strAwayLineupGoalkeeper,
+                    i.strHomeLineupDefense,
+                    i.strAwayLineupDefense,
+                    i.strHomeLineupMidfield,
+                    i.strAwayLineupMidfield,
+                    i.strHomeLineupForward,
+                    i.strAwayLineupForward
                 )
             )
         }

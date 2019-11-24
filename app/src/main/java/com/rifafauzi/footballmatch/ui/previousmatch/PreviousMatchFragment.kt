@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.adapter.MatchAdapter
@@ -64,7 +65,12 @@ class PreviousMatchFragment : BaseFragment<FragmentPreviousMatchBinding, Previou
     }
 
     override fun onMatchPressed(match: Match, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        launchDetailMatch(match.idEvent)
+    }
+
+    private fun launchDetailMatch(idEvent: String) {
+        val action = PreviousMatchFragmentDirections.actionPreviousFragmentToDetailMatchFragment(idEvent)
+        findNavController().navigate(action)
     }
 
     private fun initRecyclerView() {

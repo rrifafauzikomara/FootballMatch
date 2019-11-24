@@ -16,113 +16,133 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardContainer"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:elevation="4dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/leagueName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="League England"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{data.strLeague}"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/dateScheduleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/leagueName"
+                    tools:text="23 November 2019"
+                    android:text="@{data.dateEvent}"
+                    android:textColor="@color/colorAccent" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_below="@+id/dateScheduleTv"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
-                    <TextView
-                        android:id="@+id/homeNameTv"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@{data.strHomeTeam}"
-                        tools:text="Real Madrid" />
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/homeNameTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@{data.strHomeTeam}"
+                            tools:text="Real Madrid" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/homeScoreTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="2"
+                            android:text="@{data.intHomeScore}"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vs"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/awayScoreTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="2"
+                            android:text="@{data.intAwayScore}"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/awayNameTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@{data.strAwayTeam}"
+                            tools:text="Real Madrid" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/homeScoreTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="2"
-                        android:text="@{data.intHomeScore}"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/vs"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/awayScoreTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="2"
-                        android:text="@{data.intAwayScore}"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/awayNameTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@{data.strAwayTeam}"
-                        tools:text="Real Madrid" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/dateScheduleTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                tools:text="23 November 2019"
-                android:text="@{data.dateEvent}"
-                android:textColor="@color/colorAccent" />
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
