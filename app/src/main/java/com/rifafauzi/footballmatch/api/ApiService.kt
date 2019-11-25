@@ -2,6 +2,7 @@ package com.rifafauzi.footballmatch.api
 
 import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
 import com.rifafauzi.footballmatch.model.match.MatchResponse
+import com.rifafauzi.footballmatch.model.teams.TeamResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -29,5 +30,8 @@ interface ApiService {
 
     @GET("searchevents.php")
     fun searchMatch(@Query("e") query: String) : Observable<MatchResponse>
+
+    @GET("lookupteam.php")
+    fun getTeams(@Query("id") idTeam: String) : Observable<TeamResponse>
 
 }

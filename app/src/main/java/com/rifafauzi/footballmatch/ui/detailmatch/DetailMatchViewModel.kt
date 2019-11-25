@@ -8,7 +8,10 @@ import com.rifafauzi.footballmatch.base.BaseViewModel
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.model.match.Match
 import com.rifafauzi.footballmatch.model.match.MatchResponse
+import com.rifafauzi.footballmatch.model.teams.Team
+import com.rifafauzi.footballmatch.model.teams.TeamResponse
 import com.rifafauzi.footballmatch.repository.match.MatchRepository
+import com.rifafauzi.footballmatch.repository.teams.TeamsRepository
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,11 +21,19 @@ import javax.inject.Inject
  * Created by rrifafauzikomara on 2019-11-24.
  */
  
-class DetailMatchViewModel @Inject constructor(private val repository: MatchRepository) : BaseViewModel() {
+class DetailMatchViewModel @Inject constructor(private val repository: MatchRepository, private val repositoryTeam: TeamsRepository) : BaseViewModel() {
 
     private val _detailMatch = MutableLiveData<Result<List<Match>>>()
     val detailMatch: LiveData<Result<List<Match>>>
         get() = _detailMatch
+
+    private val _teamHome = MutableLiveData<Result<List<Team>>>()
+    val teamHome: LiveData<Result<List<Team>>>
+        get() = _teamHome
+
+    private val _awayTeam = MutableLiveData<Result<List<Team>>>()
+    val awayTeam: LiveData<Result<List<Team>>>
+        get() = _awayTeam
 
     fun getDetailMatch(idEvent: String) {
         mCompositeDisposable += repository.getDetailMatch(idEvent)
@@ -89,4 +100,101 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
     private fun setResultMatch(result: Result<List<Match>>) {
         _detailMatch.postValue(result)
     }
+
+    fun getDetailTeamHome(idTeam: String) {
+        mCompositeDisposable += repositoryTeam.getTeam(idTeam)
+            .map { transformDataHomeTeam(it) }
+            .doOnSubscribe { setResultHomeTeam(Result.Loading()) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object : BaseResponse<List<Team>>() {
+                override fun onSuccess(response: List<Team>) {
+                    if (response.isEmpty()) {
+                        setResultHomeTeam(Result.NoData())
+                        return
+                    }
+                    setResultHomeTeam(Result.HasData(response))
+                }
+
+                override fun onNoInternetConnection() {
+                    setResultHomeTeam(Result.NoInternetConnection())
+                }
+
+                override fun onTimeout() {
+                    setResultHomeTeam(Result.Error(R.string.timeout))
+                }
+
+                override fun onUnknownError(message: String) {
+                    setResultHomeTeam(Result.Error(R.string.unknown_error))
+                }
+
+            })
+    }
+
+    private fun transformDataHomeTeam(data: TeamResponse) : List<Team> {
+        val team = mutableListOf<Team>()
+
+        for (i in data.teams) {
+            team.add(
+                Team(
+                    i.idTeam,
+                    i.strTeamBadge
+                )
+            )
+        }
+        return team.toList()
+    }
+
+    fun getDetailTeamAway(idTeam: String) {
+        mCompositeDisposable += repositoryTeam.getTeam(idTeam)
+            .map { transformDataAwayTeam(it) }
+            .doOnSubscribe { setResultAwayTeam(Result.Loading()) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object : BaseResponse<List<Team>>() {
+                override fun onSuccess(response: List<Team>) {
+                    if (response.isEmpty()) {
+                        setResultAwayTeam(Result.NoData())
+                        return
+                    }
+                    setResultAwayTeam(Result.HasData(response))
+                }
+
+                override fun onNoInternetConnection() {
+                    setResultAwayTeam(Result.NoInternetConnection())
+                }
+
+                override fun onTimeout() {
+                    setResultAwayTeam(Result.Error(R.string.timeout))
+                }
+
+                override fun onUnknownError(message: String) {
+                    setResultAwayTeam(Result.Error(R.string.unknown_error))
+                }
+
+            })
+    }
+
+    private fun setResultHomeTeam(result: Result<List<Team>>) {
+        _teamHome.postValue(result)
+    }
+
+    private fun transformDataAwayTeam(data: TeamResponse) : List<Team> {
+        val team = mutableListOf<Team>()
+
+        for (i in data.teams) {
+            team.add(
+                Team(
+                    i.idTeam,
+                    i.strTeamBadge
+                )
+            )
+        }
+        return team.toList()
+    }
+
+    private fun setResultAwayTeam(result: Result<List<Team>>) {
+        _awayTeam.postValue(result)
+    }
+
 }

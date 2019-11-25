@@ -44,7 +44,7 @@
                     imageUrl="@{data.strBanner}"
                     android:padding="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:src="@drawable/ic_no_data"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
