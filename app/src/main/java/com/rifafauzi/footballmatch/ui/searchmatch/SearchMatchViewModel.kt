@@ -32,10 +32,11 @@ class SearchMatchViewModel @Inject constructor(private val repository: MatchRepo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Match>>() {
                 override fun onSuccess(response: List<Match>) {
-                    if (response.isEmpty()) {
+                    if (response.isNullOrEmpty()) {
                         setResultMatch(Result.NoData())
                         return
                     }
+
                     setResultMatch(Result.HasData(response))
                 }
 
@@ -56,38 +57,41 @@ class SearchMatchViewModel @Inject constructor(private val repository: MatchRepo
     private fun transformData(data: MatchResponse) : List<Match> {
         val match = mutableListOf<Match>()
 
-        // check if data from api is null
         if (data.search.isNullOrEmpty()) {
             setResultMatch(Result.NoData())
             return mutableListOf()
         }
 
         for (i in data.search) {
-            match.add(
-                Match(
-                    i.idEvent,
-                    i.strHomeTeam,
-                    i.strAwayTeam,
-                    i.dateEvent,
-                    i.intHomeScore,
-                    i.intAwayScore,
-                    i.strLeague,
-                    i.strHomeGoalDetails,
-                    i.strAwayGoalDetails,
-                    i.strHomeLineupSubstitutes,
-                    i.strAwayLineupSubstitutes,
-                    i.strHomeLineupGoalkeeper,
-                    i.strAwayLineupGoalkeeper,
-                    i.strHomeLineupDefense,
-                    i.strAwayLineupDefense,
-                    i.strHomeLineupMidfield,
-                    i.strAwayLineupMidfield,
-                    i.strHomeLineupForward,
-                    i.strAwayLineupForward,
-                    i.idHomeTeam,
-                    i.idAwayTeam
+            // filter for result Soccer
+            if (i.strSport.equals("Soccer")) {
+                match.add(
+                    Match(
+                        i.idEvent,
+                        i.strHomeTeam,
+                        i.strAwayTeam,
+                        i.dateEvent,
+                        i.intHomeScore,
+                        i.intAwayScore,
+                        i.strLeague,
+                        i.strHomeGoalDetails,
+                        i.strAwayGoalDetails,
+                        i.strHomeLineupSubstitutes,
+                        i.strAwayLineupSubstitutes,
+                        i.strHomeLineupGoalkeeper,
+                        i.strAwayLineupGoalkeeper,
+                        i.strHomeLineupDefense,
+                        i.strAwayLineupDefense,
+                        i.strHomeLineupMidfield,
+                        i.strAwayLineupMidfield,
+                        i.strHomeLineupForward,
+                        i.strAwayLineupForward,
+                        i.idHomeTeam,
+                        i.idAwayTeam,
+                        i.strSport
+                    )
                 )
-            )
+            }
         }
         return match.toList()
     }

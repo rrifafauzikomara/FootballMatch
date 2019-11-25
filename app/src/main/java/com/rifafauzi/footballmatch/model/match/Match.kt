@@ -69,7 +69,10 @@ data class Match(
     val idHomeTeam: String?,
 
     @SerializedName("idAwayTeam")
-    val idAwayTeam: String?
+    val idAwayTeam: String?,
+
+    @SerializedName("strSport")
+    val strSport: String?
 
 
 )
