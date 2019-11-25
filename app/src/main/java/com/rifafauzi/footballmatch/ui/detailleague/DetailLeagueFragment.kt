@@ -70,6 +70,10 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
         launchNextMatch()
     }
 
+    fun onPressedSearchMatch() {
+        launchSearchMatch()
+    }
+
     private fun launchNextMatch() {
         val action = DetailLeagueFragmentDirections.actionLaunchNextMatchFragment(idLeague)
         findNavController().navigate(action)
@@ -77,6 +81,11 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
 
     private fun launchPreviousMatch() {
         val action = DetailLeagueFragmentDirections.actionLaunchPreviousFragment(idLeague)
+        findNavController().navigate(action)
+    }
+
+    private fun launchSearchMatch() {
+        val action = DetailLeagueFragmentDirections.actionLaunchSearchMatchFragment()
         findNavController().navigate(action)
     }
 

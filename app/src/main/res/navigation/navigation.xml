@@ -85,7 +85,7 @@
     <fragment
         android:id="@+id/searchMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.searchmatch.SearchMatchFragment"
-        android:label="fragment_search_match"
+        android:label="Search Match"
         tools:layout="@layout/fragment_search_match" >
         <action
             android:id="@+id/actionSearchMatchFragmentToDetailMatchFragment"

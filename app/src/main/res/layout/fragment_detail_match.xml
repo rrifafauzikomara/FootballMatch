@@ -48,6 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         tools:text="24 November 2019"
+                        android:text="@{data.dateEvent}"
                         android:textColor="@color/colorAccent"/>
 
                     <LinearLayout
@@ -63,6 +64,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -70,7 +72,7 @@
                                 android:id="@+id/homeImg"
                                 android:layout_width="90dp"
                                 android:layout_height="90dp"
-                                tools:src="@drawable/img_madrid"
+                                tools:src="@drawable/trophy"
                                 android:contentDescription="@string/image"/>
 
                             <TextView
@@ -94,7 +96,7 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="vertical">
@@ -104,6 +106,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 tools:text="2"
+                                android:layout_gravity="center"
                                 android:text="@{data.intHomeScore}"
                                 android:textSize="32sp"
                                 android:textStyle="bold"/>
@@ -129,7 +132,7 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="vertical">
@@ -139,6 +142,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 tools:text="2"
+                                android:layout_gravity="center"
                                 android:text="@{data.intAwayScore}"
                                 android:textSize="32sp"
                                 android:textStyle="bold"/>
@@ -151,6 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="20dp"
                             android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -158,7 +163,7 @@
                                 android:id="@+id/awayImg"
                                 android:layout_width="90dp"
                                 android:layout_height="90dp"
-                                tools:src="@drawable/img_madrid"
+                                tools:src="@drawable/trophy"
                                 android:contentDescription="@string/image"/>
                             <TextView
                                 android:id="@+id/awayNameTv"
@@ -182,7 +187,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:text="@string/lineups"
                     android:textStyle="bold"/>
@@ -325,9 +331,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
-                    android:text="@string/subtitutes"
+                    android:text="@string/substitutes"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"

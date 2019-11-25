@@ -63,7 +63,13 @@ data class Match(
     val strHomeLineupForward: String?,
 
     @SerializedName("strAwayLineupForward")
-    val strAwayLineupForward: String?
+    val strAwayLineupForward: String?,
+
+    @SerializedName("idHomeTeam")
+    val idHomeTeam: String?,
+
+    @SerializedName("idAwayTeam")
+    val idAwayTeam: String?
 
 
 )

@@ -2,7 +2,8 @@ package com.rifafauzi.footballmatch.ui.searchmatch
 
 
 import android.os.Bundle
-import android.view.View
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -27,9 +28,9 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
         initRecyclerView()
 
-//        vm.searchMatch("")
         vm.searchMatch.observe(viewLifecycleOwner, Observer {
             it?.let {
                 when (it) {
@@ -62,9 +63,34 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_match, menu)
+        val searchView = menu.findItem(R.id.action_search)
+        searchView.expandActionView()
+        val actionView = searchView.actionView as SearchView
+        actionView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query.isNullOrEmpty()) {
+                    snackBar("Query don't empty")
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchMatch(newText)
+                return false
+            }
+
+        })
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun onMatchPressed(match: Match, position: Int) {
         launchMatchDetail(match.idEvent)
     }
+
+    private fun searchMatch(query: String) = vm.searchMatch(query)
 
     private fun launchMatchDetail(idEvent: String) {
         val action = SearchMatchFragmentDirections.actionSearchMatchFragmentToDetailMatchFragment(idEvent)

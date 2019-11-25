@@ -77,7 +77,9 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
                     i.strHomeLineupMidfield,
                     i.strAwayLineupMidfield,
                     i.strHomeLineupForward,
-                    i.strAwayLineupForward
+                    i.strAwayLineupForward,
+                    i.idHomeTeam,
+                    i.idAwayTeam
                 )
             )
         }

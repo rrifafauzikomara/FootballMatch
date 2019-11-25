@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Football Match</string>
     <string name="image">Image</string>
-
     <string name="favorite">Favorite</string>
     <string name="leagues">Leagues</string>
     <string name="please_wait">Please wait</string>
@@ -9,7 +8,6 @@
     <string name="timeout">Sorry, RTO</string>
     <string name="unknown_error">Sorry, Unknown Error</string>
     <string name="no_data">There are no data found</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_match">Next Match</string>
     <string name="previous_match">Previous Match</string>
@@ -19,6 +17,7 @@
     <string name="defense">Defense</string>
     <string name="midfield">Midfield</string>
     <string name="forward">Forward</string>
-    <string name="subtitutes">Subtitutes</string>
+    <string name="substitutes">Substitutes</string>
+    <string name="search">Search</string>
 
 </resources>
