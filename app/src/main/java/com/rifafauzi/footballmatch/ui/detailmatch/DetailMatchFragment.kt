@@ -77,7 +77,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     is Result.HasData -> {
                         showImage()
                         hideProgressImage()
-                        displayTeamLogo(it.data[0].strTeamBadge!!, binding.homeImg, transition)
+                        displayTeamLogo(it.data[0].strTeamBadge, binding.homeImg, transition)
                     }
                     is Result.NoData -> {
                         hideImage()
@@ -105,7 +105,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     is Result.HasData -> {
                         showImage()
                         hideProgressImage()
-                        displayTeamLogo(it.data[0].strTeamBadge!!, binding.awayImg, transition)
+                        displayTeamLogo(it.data[0].strTeamBadge, binding.awayImg, transition)
                     }
                     is Result.NoData -> {
                         hideImage()
@@ -130,7 +130,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         vm.getDetailTeamAway(data[0].idAwayTeam!!)
     }
 
-    private fun displayTeamLogo(teamUrl: String, teamImage: ImageView, transition: DrawableCrossFadeFactory) {
+    private fun displayTeamLogo(teamUrl: String?, teamImage: ImageView, transition: DrawableCrossFadeFactory) {
         Glide.with(requireContext()).load(teamUrl)
             .transition(DrawableTransitionOptions.withCrossFade(transition))
             .apply(

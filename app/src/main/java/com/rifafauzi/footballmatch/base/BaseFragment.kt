@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -28,7 +27,6 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var mViewDataBinding: B
     private lateinit var mViewModel: V
-    private lateinit var inputMethodManager : InputMethodManager
 
     val binding: B
         get() = mViewDataBinding
@@ -64,7 +62,6 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
         binding.setVariable(BR.vm, vm)
         binding.setVariable(BR.fragment, this)
 
-        inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
     fun snackBar(message: String) =
@@ -72,13 +69,4 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
 
     fun longSnackBar(message: String) =
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
-
-    fun showSoftKeyboard() {
-        inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-    }
-
-    fun hideSoftKeyboard() {
-        inputMethodManager.hideSoftInputFromWindow(view!!.windowToken, 0)
-    }
-
 }
