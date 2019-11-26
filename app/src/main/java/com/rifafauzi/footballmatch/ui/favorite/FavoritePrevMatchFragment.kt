@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.adapter.FavoriteAdapter
 import com.rifafauzi.footballmatch.databinding.FragmentFavoritePrevMatchBinding
@@ -18,10 +19,14 @@ import org.jetbrains.anko.db.select
 /**
  * A simple [Fragment] subclass.
  */
-class FavoritePrevMatchFragment : Fragment() {
+class FavoritePrevMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPressedListener {
+
+    override fun onFavoriteMatchPressed(favorite: Favorite, position: Int) {
+        launchMatchDetail(favorite.idEvent, favorite.type)
+    }
 
     private lateinit var binding: FragmentFavoritePrevMatchBinding
-    private lateinit var adapter: FavoriteAdapter
+    private val adapter = FavoriteAdapter(this)
     private var favorites: MutableList<Favorite> = mutableListOf()
 
     override fun onCreateView(
@@ -40,9 +45,6 @@ class FavoritePrevMatchFragment : Fragment() {
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(activity)
         binding.rvPrevMatchFavorite.layoutManager = layoutManager
-        adapter = FavoriteAdapter(favorites) {
-
-        }
         binding.rvPrevMatchFavorite.adapter = adapter
     }
 
@@ -54,7 +56,7 @@ class FavoritePrevMatchFragment : Fragment() {
                     "TYPE" to PREV_MATCH)
             val favorite = result.parseList(classParser<Favorite>())
             favorites.addAll(favorite)
-            adapter.notifyDataSetChanged()
+            adapter.submitList(favorites)
         }
 
         if (favorites.isEmpty()) {
@@ -64,6 +66,12 @@ class FavoritePrevMatchFragment : Fragment() {
             showData()
             hideLayoutEmpty()
         }
+    }
+
+    private fun launchMatchDetail(idEvent: String, type: String) {
+        val action =
+            FavoritePrevMatchFragmentDirections.actionFavoritePrevMatchFragmentToDetailMatchFragment(idEvent, type)
+        findNavController().navigate(action)
     }
 
     private fun showData() {

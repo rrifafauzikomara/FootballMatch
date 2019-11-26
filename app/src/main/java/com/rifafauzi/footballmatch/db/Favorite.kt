@@ -35,7 +35,7 @@ data class Favorite(
     val strHomeLineupSubstitutes: String?,
     val strAwayLineupSubstitutes: String?,
 
-    val type: String?
+    val type: String
 ) {
 
     companion object {
