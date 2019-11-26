@@ -113,9 +113,9 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteFragment"
+        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteMatchFragment"
         android:label="Favorite Match"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite_match" />
     <fragment
         android:id="@+id/favoriteNextMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteNextMatchFragment"

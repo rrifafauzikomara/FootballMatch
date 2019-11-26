@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -42,6 +43,8 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
     private var type: String? = null
     private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
+    private var imageHome: String? = null
+    private var imageAway: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -105,7 +108,8 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     is Result.HasData -> {
                         showImage()
                         hideProgressImage()
-                        displayTeamLogo(it.data[0].strTeamBadge, binding.homeImg, transition)
+                        imageHome = it.data[0].strTeamBadge
+                        displayTeamLogo(imageHome, binding.homeImg, transition)
                     }
                     is Result.NoData -> {
                         hideImage()
@@ -133,7 +137,8 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     is Result.HasData -> {
                         showImage()
                         hideProgressImage()
-                        displayTeamLogo(it.data[0].strTeamBadge, binding.awayImg, transition)
+                        imageAway = it.data[0].strTeamBadge
+                        displayTeamLogo(imageAway, binding.awayImg, transition)
                     }
                     is Result.NoData -> {
                         hideImage()
@@ -191,12 +196,12 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     Favorite.ID_EVENT to idEvent,
                     Favorite.LEAGUE_NAME to binding.data?.strLeague,
                     Favorite.DATE_EVENT to binding.data?.dateEvent,
-                    Favorite.HOME_TEAM_BADGE to "logo team home",
+                    Favorite.HOME_TEAM_BADGE to imageHome,
                     Favorite.HOME_TEAM_NAME to binding.data?.strHomeTeam,
                     Favorite.HOME_GOAL_DETAIL to binding.data?.strHomeGoalDetails,
                     Favorite.HOME_SCORE to binding.data?.intHomeScore,
                     Favorite.AWAY_SCORE to binding.data?.intAwayScore,
-                    Favorite.AWAY_TEAM_BADGE to "logo team away",
+                    Favorite.AWAY_TEAM_BADGE to imageAway,
                     Favorite.AWAY_TEAM_NAME to binding.data?.strAwayTeam,
                     Favorite.AWAY_GOAL_DETAIL to binding.data?.strAwayGoalDetails,
                     Favorite.HOME_LINEUP_GOAL_KEEPER to binding.data?.strHomeLineupGoalkeeper,
@@ -228,6 +233,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                 )
             }
             snackBar("Removed from favorite")
+            findNavController().navigateUp()
         } catch (e: SQLiteConstraintException) {
             Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
         }

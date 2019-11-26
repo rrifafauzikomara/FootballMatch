@@ -13,23 +13,23 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.rifafauzi.footballmatch.R
-import com.rifafauzi.footballmatch.databinding.FragmentFavoriteBinding
+import com.rifafauzi.footballmatch.databinding.FragmentFavoriteMatchBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavoriteFragment : Fragment() {
+class FavoriteMatchFragment : Fragment() {
 
     private lateinit var viewPager : ViewPager
     private lateinit var viewPagerAdapter : ViewPagerFragment
     private lateinit var tabLayout : TabLayout
-    private lateinit var binding: FragmentFavoriteBinding
+    private lateinit var binding: FragmentFavoriteMatchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_favorite, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_favorite_match, container, false)
         return binding.root
     }
 
@@ -56,7 +56,6 @@ class FavoriteFragment : Fragment() {
         }
 
         override fun getCount(): Int {
-
             return pages.size
         }
         override fun getPageTitle(position: Int): CharSequence? {

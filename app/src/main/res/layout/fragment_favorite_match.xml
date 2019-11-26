@@ -3,16 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="fragment"
-            type="com.rifafauzi.footballmatch.ui.favorite.FavoriteFragment" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.favorite.FavoriteFragment"
+        tools:context=".ui.favorite.FavoriteMatchFragment"
         android:screenOrientation="portrait">
 
         <androidx.viewpager.widget.ViewPager
