@@ -2,6 +2,7 @@ package com.rifafauzi.footballmatch.repository.leagues
 
 import com.rifafauzi.footballmatch.api.ApiService
 import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
+import com.rifafauzi.footballmatch.utils.TYPE_SPORT
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -12,7 +13,7 @@ import javax.inject.Inject
 class LeaguesRepository @Inject constructor(private val apiService: ApiService) {
 
     fun getListLeagues() : Observable<LeaguesResponse> {
-        return apiService.getListLeagues("Soccer")
+        return apiService.getListLeagues(TYPE_SPORT)
     }
 
     fun getDetailLeague(idLeague: String) : Observable<LeaguesResponse> {

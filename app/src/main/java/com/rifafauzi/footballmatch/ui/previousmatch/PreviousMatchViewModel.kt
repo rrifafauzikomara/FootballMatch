@@ -85,7 +85,8 @@ class PreviousMatchViewModel @Inject constructor(private val repository: MatchRe
                     i.strHomeLineupForward,
                     i.strAwayLineupForward,
                     i.idHomeTeam,
-                    i.idAwayTeam
+                    i.idAwayTeam,
+                    i.strSport
                 )
             )
         }

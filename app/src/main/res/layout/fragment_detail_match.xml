@@ -99,7 +99,7 @@
                                     android:layout_width="90dp"
                                     android:layout_height="90dp"
                                     android:visibility="@{showImage ? View.VISIBLE : View.INVISIBLE}"
-                                    tools:src="@drawable/trophy"
+                                    tools:src="@drawable/ic_trophy"
                                     android:contentDescription="@string/image"/>
 
                                 <ProgressBar
@@ -197,7 +197,7 @@
                                     android:layout_width="90dp"
                                     android:layout_height="90dp"
                                     android:visibility="@{showImage ? View.VISIBLE : View.INVISIBLE}"
-                                    tools:src="@drawable/trophy"
+                                    tools:src="@drawable/ic_trophy"
                                     android:contentDescription="@string/image"/>
 
                                 <ProgressBar

@@ -104,5 +104,20 @@
             android:name="idEvent"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteFragment"
+        android:label="Favorite Match"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/favoriteNextMatchFragment"
+        android:name="com.rifafauzi.footballmatch.FavoriteNextMatchFragment"
+        android:label="fragment_favorite_next_match"
+        tools:layout="@layout/fragment_favorite_next_match" />
+    <fragment
+        android:id="@+id/favoritePrevMatchFragment"
+        android:name="com.rifafauzi.footballmatch.FavoritePrevMatchFragment"
+        android:label="fragment_favorite_prev_match"
+        tools:layout="@layout/fragment_favorite_prev_match" />
 
 </navigation>

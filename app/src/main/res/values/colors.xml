@@ -6,4 +6,5 @@
     <color name="placeholder_color">#dddddd</color>
     <color name="grey_700">#616161</color>
     <color name="white">#FFFFFF</color>
+    <color name="carbon">#333333</color>
 </resources>

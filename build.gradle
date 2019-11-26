@@ -54,4 +54,5 @@ ext {
     timber_version = '4.7.1'
     shimmer_version = '0.5.0'
     multidex_version = '1.0.3'
+    anko_version='0.10.8'
 }

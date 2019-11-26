@@ -9,6 +9,7 @@ import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.model.match.Match
 import com.rifafauzi.footballmatch.model.match.MatchResponse
 import com.rifafauzi.footballmatch.repository.match.MatchRepository
+import com.rifafauzi.footballmatch.utils.TYPE_SPORT
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -63,31 +64,34 @@ class SearchMatchViewModel @Inject constructor(private val repository: MatchRepo
         }
 
         for (i in data.search) {
-            match.add(
-                Match(
-                    i.idEvent,
-                    i.strHomeTeam,
-                    i.strAwayTeam,
-                    i.dateEvent,
-                    i.intHomeScore,
-                    i.intAwayScore,
-                    i.strLeague,
-                    i.strHomeGoalDetails,
-                    i.strAwayGoalDetails,
-                    i.strHomeLineupSubstitutes,
-                    i.strAwayLineupSubstitutes,
-                    i.strHomeLineupGoalkeeper,
-                    i.strAwayLineupGoalkeeper,
-                    i.strHomeLineupDefense,
-                    i.strAwayLineupDefense,
-                    i.strHomeLineupMidfield,
-                    i.strAwayLineupMidfield,
-                    i.strHomeLineupForward,
-                    i.strAwayLineupForward,
-                    i.idHomeTeam,
-                    i.idAwayTeam
+            if (i.strSport.equals(TYPE_SPORT)) {
+                match.add(
+                    Match(
+                        i.idEvent,
+                        i.strHomeTeam,
+                        i.strAwayTeam,
+                        i.dateEvent,
+                        i.intHomeScore,
+                        i.intAwayScore,
+                        i.strLeague,
+                        i.strHomeGoalDetails,
+                        i.strAwayGoalDetails,
+                        i.strHomeLineupSubstitutes,
+                        i.strAwayLineupSubstitutes,
+                        i.strHomeLineupGoalkeeper,
+                        i.strAwayLineupGoalkeeper,
+                        i.strHomeLineupDefense,
+                        i.strAwayLineupDefense,
+                        i.strHomeLineupMidfield,
+                        i.strAwayLineupMidfield,
+                        i.strHomeLineupForward,
+                        i.strAwayLineupForward,
+                        i.idHomeTeam,
+                        i.idAwayTeam,
+                        i.strSport
+                    )
                 )
-            )
+            }
         }
         return match.toList()
     }

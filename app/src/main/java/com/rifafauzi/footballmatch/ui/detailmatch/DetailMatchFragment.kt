@@ -135,7 +135,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
             .transition(DrawableTransitionOptions.withCrossFade(transition))
             .apply(
                 RequestOptions()
-                    .placeholder(R.drawable.trophy)
+                    .placeholder(R.drawable.ic_trophy)
                     .error(R.drawable.ic_error))
             .into(teamImage)
     }

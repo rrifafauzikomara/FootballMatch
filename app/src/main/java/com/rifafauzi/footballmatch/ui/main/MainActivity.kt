@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.databinding.ActivityMainBinding
 import dagger.android.AndroidInjection
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         initMain()
         setupToolbar()
         setupNavController()
+        setupBottomNavigation()
 
     }
 
@@ -54,6 +56,11 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         navController.addOnDestinationChangedListener(navigationListener)
     }
 
+    private fun setupBottomNavigation() {
+        binding.bottomNavigationView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener(navigationListener)
+    }
+
     private fun hideToolbarSubtitle() {
         supportActionBar?.subtitle = null
     }
@@ -66,6 +73,11 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         supportActionBar?.setDisplayHomeAsUpEnabled(shouldShow)
     }
 
+    private fun showBottomNavigation(shouldShow: Boolean) {
+        if (shouldShow) binding.bottomNavigationView.visibility =
+            View.VISIBLE else binding.bottomNavigationView.visibility = View.GONE
+    }
+
     private val navigationListener =
         NavController.OnDestinationChangedListener { _, destination, _ ->
             invalidateOptionsMenu()
@@ -74,30 +86,42 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 R.id.leaguesFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(false)
+                    showBottomNavigation(true)
+                }
+                R.id.favoriteFragment -> {
+                    showToolbar(true)
+                    showToolbarBackArrow(false)
+                    showBottomNavigation(true)
                 }
                 R.id.detailLeagueFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
+                    showBottomNavigation(false)
                 }
                 R.id.nextMatchFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
+                    showBottomNavigation(false)
                 }
                 R.id.previousFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
+                    showBottomNavigation(false)
                 }
                 R.id.detailMatchFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
+                    showBottomNavigation(false)
                 }
                 R.id.searchMatchFragment -> {
                     showToolbar(true)
                     showToolbarBackArrow(true)
+                    showBottomNavigation(false)
                 }
                 else -> {
                     showToolbar(false)
                     showToolbarBackArrow(false)
+                    showBottomNavigation(false)
                 }
             }
         }
@@ -106,6 +130,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         when (navController.currentDestination?.id) {
             R.id.leaguesFragment -> {
                 finish()
+            }
+            R.id.favoriteFragment -> {
+                binding.bottomNavigationView.selectedItemId = R.id.leaguesFragment
             }
             else -> {
                 navController.navigateUp()

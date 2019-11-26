@@ -90,7 +90,8 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
                     i.strHomeLineupForward,
                     i.strAwayLineupForward,
                     i.idHomeTeam,
-                    i.idAwayTeam
+                    i.idAwayTeam,
+                    i.strSport
                 )
             )
         }
