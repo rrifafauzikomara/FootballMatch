@@ -115,12 +115,12 @@
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/favoriteNextMatchFragment"
-        android:name="com.rifafauzi.footballmatch.FavoriteNextMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteNextMatchFragment"
         android:label="fragment_favorite_next_match"
         tools:layout="@layout/fragment_favorite_next_match" />
     <fragment
         android:id="@+id/favoritePrevMatchFragment"
-        android:name="com.rifafauzi.footballmatch.FavoritePrevMatchFragment"
+        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoritePrevMatchFragment"
         android:label="fragment_favorite_prev_match"
         tools:layout="@layout/fragment_favorite_prev_match" />
 
