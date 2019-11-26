@@ -2,6 +2,8 @@ package com.rifafauzi.footballmatch.ui.detailmatch
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -26,9 +28,13 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
     override fun getViewModelClass() = DetailMatchViewModel::class.java
 
     private var idEvent: String? = null
+    private var menuItem: Menu? = null
+    private var isFavorite: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
 
         //Enable cross fade transition on glide
         val transition = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
@@ -125,6 +131,12 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_match, menu)
+        menuItem = menu
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun displayData(data: List<Match>) {
