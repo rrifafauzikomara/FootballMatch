@@ -25,8 +25,10 @@ class FootballDatabaseOpenHelper (ctx: Context) : ManagedSQLiteOpenHelper(ctx, "
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables
         db.createTable(
-            Favorite.TABLE_FAVORITE, true,
+            Favorite.TABLE_FAVORITE,
+            true,
             Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            Favorite.ID_EVENT to TEXT + UNIQUE,
             Favorite.LEAGUE_NAME to TEXT,
             Favorite.DATE_EVENT to TEXT,
             Favorite.HOME_TEAM_BADGE to TEXT,

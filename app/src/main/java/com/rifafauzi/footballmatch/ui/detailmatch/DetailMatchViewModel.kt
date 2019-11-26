@@ -35,7 +35,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
     val awayTeam: LiveData<Result<List<Team>>>
         get() = _awayTeam
 
-    fun getDetailMatch(idEvent: String?) {
+    fun getDetailMatch(idEvent: String) {
         mCompositeDisposable += repository.getDetailMatch(idEvent)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }

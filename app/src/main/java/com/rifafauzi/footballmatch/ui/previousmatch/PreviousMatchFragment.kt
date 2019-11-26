@@ -13,6 +13,7 @@ import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentPreviousMatchBinding
 import com.rifafauzi.footballmatch.model.match.Match
+import com.rifafauzi.footballmatch.utils.PREV_MATCH
 
 /**
  * A simple [Fragment] subclass.
@@ -73,7 +74,7 @@ class PreviousMatchFragment : BaseFragment<FragmentPreviousMatchBinding, Previou
     }
 
     private fun launchDetailMatch(idEvent: String) {
-        val action = PreviousMatchFragmentDirections.actionPreviousFragmentToDetailMatchFragment(idEvent)
+        val action = PreviousMatchFragmentDirections.actionPreviousFragmentToDetailMatchFragment(idEvent, PREV_MATCH)
         findNavController().navigate(action)
     }
 

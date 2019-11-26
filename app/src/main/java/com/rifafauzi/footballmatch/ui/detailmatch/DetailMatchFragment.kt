@@ -1,11 +1,15 @@
 package com.rifafauzi.footballmatch.ui.detailmatch
 
 
+import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -16,7 +20,14 @@ import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentDetailMatchBinding
+import com.rifafauzi.footballmatch.db.Favorite
+import com.rifafauzi.footballmatch.db.database
 import com.rifafauzi.footballmatch.model.match.Match
+import com.rifafauzi.footballmatch.utils.NEXT_MATCH
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.delete
+import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
 
 /**
  * A simple [Fragment] subclass.
@@ -27,7 +38,8 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
 
     override fun getViewModelClass() = DetailMatchViewModel::class.java
 
-    private var idEvent: String? = null
+    private lateinit var idEvent: String
+    private var type: String? = null
     private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
 
@@ -42,8 +54,15 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         arguments?.let {
             val safeArgs = DetailMatchFragmentArgs.fromBundle(it)
             idEvent = safeArgs.idEvent
+
+            type = if (type.equals(NEXT_MATCH)) {
+                safeArgs.type
+            } else {
+                safeArgs.type
+            }
         }
 
+        favoriteState()
         vm.getDetailMatch(idEvent)
         vm.detailMatch.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -136,7 +155,91 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.detail_match, menu)
         menuItem = menu
+        setFavorite()
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.add_to_favorite -> {
+                if (isFavorite) removeFromFavorite() else addToFavorite()
+
+                isFavorite = !isFavorite
+                setFavorite()
+
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun favoriteState(){
+        context?.database?.use {
+            val result = select(Favorite.TABLE_FAVORITE)
+                .whereArgs("(ID_EVENT = {id})",
+                    "id" to idEvent)
+            val favorite = result.parseList(classParser<Favorite>())
+            if (favorite.isNotEmpty()) isFavorite = true
+        }
+    }
+
+    private fun addToFavorite(){
+        try {
+            context?.database?.use {
+                insert(
+                    Favorite.TABLE_FAVORITE,
+                    Favorite.ID_EVENT to idEvent,
+                    Favorite.LEAGUE_NAME to binding.data?.strLeague,
+                    Favorite.DATE_EVENT to binding.data?.dateEvent,
+                    Favorite.HOME_TEAM_BADGE to "logo team home",
+                    Favorite.HOME_TEAM_NAME to binding.data?.strHomeTeam,
+                    Favorite.HOME_GOAL_DETAIL to binding.data?.strHomeGoalDetails,
+                    Favorite.HOME_SCORE to binding.data?.intHomeScore,
+                    Favorite.AWAY_SCORE to binding.data?.intAwayScore,
+                    Favorite.AWAY_TEAM_BADGE to "logo team away",
+                    Favorite.AWAY_TEAM_NAME to binding.data?.strAwayTeam,
+                    Favorite.AWAY_GOAL_DETAIL to binding.data?.strAwayGoalDetails,
+                    Favorite.HOME_LINEUP_GOAL_KEEPER to binding.data?.strHomeLineupGoalkeeper,
+                    Favorite.AWAY_LINEUP_GOAL_KEEPER to binding.data?.strAwayLineupGoalkeeper,
+                    Favorite.HOME_LINEUP_DEFENSE to binding.data?.strHomeLineupDefense,
+                    Favorite.AWAY_LINEUP_DEFENSE to binding.data?.strAwayLineupDefense,
+                    Favorite.HOME_LINEUP_MIDFIELD to binding.data?.strHomeLineupMidfield,
+                    Favorite.AWAY_LINEUP_MIDFIELD to binding.data?.strAwayLineupMidfield,
+                    Favorite.HOME_LINEUP_FORWARD to binding.data?.strHomeLineupForward,
+                    Favorite.AWAY_LINEUP_FORWARD to binding.data?.strAwayLineupForward,
+                    Favorite.HOME_LINEUP_SUBSTITUTES to binding.data?.strHomeLineupSubstitutes,
+                    Favorite.AWAY_LINEUP_SUBSTITUTES to binding.data?.strAwayLineupSubstitutes,
+                    Favorite.TYPE to type
+                )
+            }
+            snackBar("Added to Favorite")
+        } catch (e: SQLiteConstraintException){
+            Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun removeFromFavorite() {
+        try {
+            context?.database?.use {
+                delete(
+                    Favorite.TABLE_FAVORITE,
+                    "(ID_EVENT = {id})",
+                    "id" to idEvent
+                )
+            }
+            snackBar("Removed from favorite")
+        } catch (e: SQLiteConstraintException) {
+            Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setFavorite() {
+        if (isFavorite)
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_added_to_favorites)
+        else
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_add_to_favorites)
     }
 
     private fun displayData(data: List<Match>) {

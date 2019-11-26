@@ -2,25 +2,30 @@ package com.rifafauzi.footballmatch.ui.searchmatch
 
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.adapter.MatchAdapter
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentSearchMatchBinding
 import com.rifafauzi.footballmatch.model.match.Match
+import com.rifafauzi.footballmatch.utils.NEXT_MATCH
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatchViewModel>(), MatchAdapter.OnMatchPressedListener {
 
-    override fun getLayoutResourceId() = R.layout.fragment_search_match
+    override fun getLayoutResourceId() = com.rifafauzi.footballmatch.R.layout.fragment_search_match
     override fun getViewModelClass() = SearchMatchViewModel::class.java
 
     private val adapter = MatchAdapter(this)
@@ -64,8 +69,8 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.search_match, menu)
-        val searchView = menu.findItem(R.id.action_search)
+        inflater.inflate(com.rifafauzi.footballmatch.R.menu.search_match, menu)
+        val searchView = menu.findItem(com.rifafauzi.footballmatch.R.id.action_search)
         searchView.expandActionView()
         val actionView = searchView.actionView as SearchView
         actionView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -83,6 +88,21 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
 
         })
 
+        // for handle back stack search view
+        MenuItemCompat.setOnActionExpandListener(
+            searchView,
+            object : MenuItemCompat.OnActionExpandListener {
+                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                    return true
+                }
+
+                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                    findNavController().navigateUp()
+                    return true
+                }
+
+            })
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -93,7 +113,7 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
     private fun searchMatch(query: String) = vm.searchMatch(query)
 
     private fun launchMatchDetail(idEvent: String) {
-        val action = SearchMatchFragmentDirections.actionSearchMatchFragmentToDetailMatchFragment(idEvent)
+        val action = SearchMatchFragmentDirections.actionSearchMatchFragmentToDetailMatchFragment(idEvent, NEXT_MATCH)
         findNavController().navigate(action)
     }
 

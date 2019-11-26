@@ -19,7 +19,7 @@ class MatchRepository @Inject constructor(private val apiService: ApiService) {
         return apiService.getPrevMatch(idLeague)
     }
 
-    fun getDetailMatch(idEvent: String?) : Observable<MatchResponse> {
+    fun getDetailMatch(idEvent: String) : Observable<MatchResponse> {
         return apiService.getDetailMatch(idEvent)
     }
 

@@ -105,6 +105,9 @@
         tools:layout="@layout/fragment_detail_match" >
         <argument
             android:name="idEvent"
+            app:argType="string"/>
+        <argument
+            android:name="type"
             app:argType="string"
             app:nullable="true" />
     </fragment>

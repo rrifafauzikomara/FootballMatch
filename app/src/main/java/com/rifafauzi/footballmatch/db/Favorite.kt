@@ -5,7 +5,8 @@ package com.rifafauzi.footballmatch.db
  */
  
 data class Favorite(
-    val id: Long?,
+    val id: Long,
+    val idEvent: String,
     val strLeague: String?,
     val dateEvent: String?,
 
@@ -40,6 +41,7 @@ data class Favorite(
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
         const val ID: String = "ID_"
+        const val ID_EVENT: String = "ID_EVENT"
         const val LEAGUE_NAME: String = "LEAGUE_NAME"
         const val DATE_EVENT: String = "DATE_EVENT"
 

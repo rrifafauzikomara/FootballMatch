@@ -13,6 +13,7 @@ import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentNextMatchBinding
 import com.rifafauzi.footballmatch.model.match.Match
+import com.rifafauzi.footballmatch.utils.NEXT_MATCH
 
 /**
  * A simple [Fragment] subclass.
@@ -73,8 +74,8 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
         launchDetailMatch(match.idEvent)
     }
 
-    private fun launchDetailMatch(idEvent: String?) {
-        val action = NextMatchFragmentDirections.actionNextMatchFragmentToDetailMatchFragment(idEvent)
+    private fun launchDetailMatch(idEvent: String) {
+        val action = NextMatchFragmentDirections.actionNextMatchFragmentToDetailMatchFragment(idEvent, NEXT_MATCH)
         findNavController().navigate(action)
     }
 

@@ -5,3 +5,5 @@ package com.rifafauzi.footballmatch.utils
  */
  
 const val TYPE_SPORT = "Soccer"
+const val NEXT_MATCH = "NextMatch"
+const val PREV_MATCH = "PrevMatch"
