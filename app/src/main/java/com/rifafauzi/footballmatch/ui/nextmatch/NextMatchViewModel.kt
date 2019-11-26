@@ -24,7 +24,7 @@ class NextMatchViewModel @Inject constructor(private val repository: MatchReposi
     val nextMatch: LiveData<Result<List<Match>>>
         get() = _nextMatch
 
-    fun getNextMatch(idLeague: String) {
+    fun getNextMatch(idLeague: String?) {
         mCompositeDisposable += repository.getNextMatch(idLeague)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }

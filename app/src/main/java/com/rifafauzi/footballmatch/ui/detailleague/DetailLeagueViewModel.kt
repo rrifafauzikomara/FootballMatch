@@ -24,7 +24,7 @@ class DetailLeagueViewModel @Inject constructor(private val repository: LeaguesR
     val detailLeague: LiveData<Result<List<Leagues>>>
         get() = _detailLeague
 
-    fun getDetailLeague(idLeague: String) {
+    fun getDetailLeague(idLeague: String?) {
         mCompositeDisposable += repository.getDetailLeague(idLeague)
             .map { transformData(it) }
             .doOnSubscribe { setResultDetailLeague(Result.Loading()) }

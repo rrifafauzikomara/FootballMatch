@@ -11,7 +11,7 @@ import javax.inject.Inject
  
 class TeamsRepository @Inject constructor(private val apiService: ApiService) {
 
-    fun getTeam(idTeam: String) : Observable<TeamResponse> {
+    fun getTeam(idTeam: String?) : Observable<TeamResponse> {
         return apiService.getTeams(idTeam)
     }
 

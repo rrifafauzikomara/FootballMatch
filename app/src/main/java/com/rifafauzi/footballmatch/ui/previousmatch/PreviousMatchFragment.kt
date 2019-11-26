@@ -23,13 +23,17 @@ class PreviousMatchFragment : BaseFragment<FragmentPreviousMatchBinding, Previou
     override fun getViewModelClass() = PreviousMatchViewModel::class.java
 
     private val adapter = MatchAdapter(this)
+    private var idLeague: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
 
-        val idLeague = PreviousMatchFragmentArgs.fromBundle(arguments!!).idLeague
+        arguments?.let {
+            val safeArgs = PreviousMatchFragmentArgs.fromBundle(it)
+            idLeague = safeArgs.idLeague
+        }
 
         vm.getPrevMatch(idLeague)
         vm.prevMatch.observe(viewLifecycleOwner, Observer {

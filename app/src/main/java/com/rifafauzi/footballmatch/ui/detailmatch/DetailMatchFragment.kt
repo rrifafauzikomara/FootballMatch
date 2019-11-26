@@ -25,7 +25,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
 
     override fun getViewModelClass() = DetailMatchViewModel::class.java
 
-    private lateinit var idEvent: String
+    private var idEvent: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +33,10 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         //Enable cross fade transition on glide
         val transition = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
 
-        idEvent = DetailMatchFragmentArgs.fromBundle(arguments!!).idEvent
+        arguments?.let {
+            val safeArgs = DetailMatchFragmentArgs.fromBundle(it)
+            idEvent = safeArgs.idEvent
+        }
 
         vm.getDetailMatch(idEvent)
         vm.detailMatch.observe(viewLifecycleOwner, Observer {
@@ -126,8 +129,8 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
 
     private fun displayData(data: List<Match>) {
         binding.data = data[0]
-        vm.getDetailTeamHome(data[0].idHomeTeam!!)
-        vm.getDetailTeamAway(data[0].idAwayTeam!!)
+        vm.getDetailTeamHome(data[0].idHomeTeam)
+        vm.getDetailTeamAway(data[0].idAwayTeam)
     }
 
     private fun displayTeamLogo(teamUrl: String?, teamImage: ImageView, transition: DrawableCrossFadeFactory) {

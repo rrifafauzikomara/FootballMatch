@@ -24,7 +24,7 @@ class PreviousMatchViewModel @Inject constructor(private val repository: MatchRe
     val prevMatch: LiveData<Result<List<Match>>>
         get() = _prevMatch
 
-    fun getPrevMatch(idLeague: String) {
+    fun getPrevMatch(idLeague: String?) {
         mCompositeDisposable += repository.getPrevMatch(idLeague)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }

@@ -17,21 +17,21 @@ interface ApiService {
     fun getListLeagues(@Query("s") sport: String) : Observable<LeaguesResponse>
 
     @GET("lookupleague.php")
-    fun getDetailLeague(@Query("id") idLeagues: String) : Observable<LeaguesResponse>
+    fun getDetailLeague(@Query("id") idLeagues: String?) : Observable<LeaguesResponse>
 
     @GET("eventspastleague.php")
-    fun getPrevMatch(@Query("id") idLeagues: String) : Observable<MatchResponse>
+    fun getPrevMatch(@Query("id") idLeagues: String?) : Observable<MatchResponse>
 
     @GET("eventsnextleague.php")
-    fun getNextMatch(@Query("id") idLeagues: String) : Observable<MatchResponse>
+    fun getNextMatch(@Query("id") idLeagues: String?) : Observable<MatchResponse>
 
     @GET("lookupevent.php")
-    fun getDetailMatch(@Query("id") idEvent: String) : Observable<MatchResponse>
+    fun getDetailMatch(@Query("id") idEvent: String?) : Observable<MatchResponse>
 
     @GET("searchevents.php")
     fun searchMatch(@Query("e") query: String) : Observable<MatchResponse>
 
     @GET("lookupteam.php")
-    fun getTeams(@Query("id") idTeam: String) : Observable<TeamResponse>
+    fun getTeams(@Query("id") idTeam: String?) : Observable<TeamResponse>
 
 }

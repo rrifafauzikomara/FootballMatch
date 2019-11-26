@@ -21,12 +21,15 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
 
     override fun getViewModelClass() = DetailLeagueViewModel::class.java
 
-    private lateinit var idLeague: String
+    private var idLeague: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        idLeague = DetailLeagueFragmentArgs.fromBundle(arguments!!).idLeague
+        arguments?.let {
+            val safeArgs = DetailLeagueFragmentArgs.fromBundle(it)
+            idLeague = safeArgs.idLeague
+        }
 
         vm.getDetailLeague(idLeague)
         vm.detailLeague.observe(viewLifecycleOwner, Observer {

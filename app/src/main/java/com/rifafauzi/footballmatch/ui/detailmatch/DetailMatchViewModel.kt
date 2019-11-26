@@ -35,7 +35,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
     val awayTeam: LiveData<Result<List<Team>>>
         get() = _awayTeam
 
-    fun getDetailMatch(idEvent: String) {
+    fun getDetailMatch(idEvent: String?) {
         mCompositeDisposable += repository.getDetailMatch(idEvent)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }
@@ -102,7 +102,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
         _detailMatch.postValue(result)
     }
 
-    fun getDetailTeamHome(idTeam: String) {
+    fun getDetailTeamHome(idTeam: String?) {
         mCompositeDisposable += repositoryTeam.getTeam(idTeam)
             .map { transformDataHomeTeam(it) }
             .doOnSubscribe { setResultHomeTeam(Result.Loading()) }
@@ -146,7 +146,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
         return team.toList()
     }
 
-    fun getDetailTeamAway(idTeam: String) {
+    fun getDetailTeamAway(idTeam: String?) {
         mCompositeDisposable += repositoryTeam.getTeam(idTeam)
             .map { transformDataAwayTeam(it) }
             .doOnSubscribe { setResultAwayTeam(Result.Loading()) }

@@ -23,13 +23,17 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
     override fun getViewModelClass() = NextMatchViewModel::class.java
 
     private val adapter = MatchAdapter(this)
+    private var idLeague:String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
 
-        val idLeague = NextMatchFragmentArgs.fromBundle(arguments!!).idLeague
+        arguments?.let {
+            val safeArgs = NextMatchFragmentArgs.fromBundle(it)
+            idLeague = safeArgs.idLeague
+        }
 
         vm.getNextMatch(idLeague)
         vm.nextMatch.observe(viewLifecycleOwner, Observer {
@@ -69,7 +73,7 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
         launchDetailMatch(match.idEvent)
     }
 
-    private fun launchDetailMatch(idEvent: String) {
+    private fun launchDetailMatch(idEvent: String?) {
         val action = NextMatchFragmentDirections.actionNextMatchFragmentToDetailMatchFragment(idEvent)
         findNavController().navigate(action)
     }

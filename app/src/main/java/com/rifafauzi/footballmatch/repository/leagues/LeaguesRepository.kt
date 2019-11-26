@@ -16,7 +16,7 @@ class LeaguesRepository @Inject constructor(private val apiService: ApiService) 
         return apiService.getListLeagues(TYPE_SPORT)
     }
 
-    fun getDetailLeague(idLeague: String) : Observable<LeaguesResponse> {
+    fun getDetailLeague(idLeague: String?) : Observable<LeaguesResponse> {
         return apiService.getDetailLeague(idLeague)
     }
 

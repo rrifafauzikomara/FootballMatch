@@ -11,15 +11,15 @@ import javax.inject.Inject
  
 class MatchRepository @Inject constructor(private val apiService: ApiService) {
 
-    fun getNextMatch(idLeague: String) : Observable<MatchResponse> {
+    fun getNextMatch(idLeague: String?) : Observable<MatchResponse> {
         return apiService.getNextMatch(idLeague)
     }
 
-    fun getPrevMatch(idLeague: String) : Observable<MatchResponse> {
+    fun getPrevMatch(idLeague: String?) : Observable<MatchResponse> {
         return apiService.getPrevMatch(idLeague)
     }
 
-    fun getDetailMatch(idEvent: String) : Observable<MatchResponse> {
+    fun getDetailMatch(idEvent: String?) : Observable<MatchResponse> {
         return apiService.getDetailMatch(idEvent)
     }
 

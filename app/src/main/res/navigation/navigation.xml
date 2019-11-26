@@ -26,7 +26,8 @@
 
         <argument
             android:name="idLeague"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/actionLaunchNextMatchFragment"
             app:destination="@id/nextMatchFragment"
@@ -57,7 +58,8 @@
         tools:layout="@layout/fragment_next_match" >
         <argument
             android:name="idLeague"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/actionNextMatchFragmentToDetailMatchFragment"
             app:destination="@id/detailMatchFragment"
@@ -73,7 +75,8 @@
         tools:layout="@layout/fragment_previous_match" >
         <argument
             android:name="idLeague"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/actionPreviousFragmentToDetailMatchFragment"
             app:destination="@id/detailMatchFragment"
@@ -102,7 +105,8 @@
         tools:layout="@layout/fragment_detail_match" >
         <argument
             android:name="idEvent"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
