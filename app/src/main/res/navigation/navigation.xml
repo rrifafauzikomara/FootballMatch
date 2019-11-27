@@ -23,7 +23,6 @@
         android:name="com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueFragment"
         android:label="Detail League"
         tools:layout="@layout/fragment_detail_league">
-
         <argument
             android:name="idLeague"
             app:argType="string"
@@ -49,7 +48,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
-
     </fragment>
     <fragment
         android:id="@+id/nextMatchFragment"
@@ -115,32 +113,22 @@
         android:id="@+id/favoriteFragment"
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteMatchFragment"
         android:label="Favorite Match"
-        tools:layout="@layout/fragment_favorite_match" />
+        tools:layout="@layout/fragment_favorite_match" >
+        <action
+            android:id="@+id/actionFavoriteFragmentToDetailMatchFragment"
+            app:destination="@id/detailMatchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/favoriteNextMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteNextMatchFragment"
-        android:label="fragment_favorite_next_match"
-        tools:layout="@layout/fragment_favorite_next_match" >
-        <action
-            android:id="@+id/actionFavoriteNextMatchFragmentToDetailMatchFragment"
-            app:destination="@id/detailMatchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
+        tools:layout="@layout/fragment_favorite_next_match"/>
     <fragment
         android:id="@+id/favoritePrevMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoritePrevMatchFragment"
-        android:label="fragment_favorite_prev_match"
-        tools:layout="@layout/fragment_favorite_prev_match" >
-        <action
-            android:id="@+id/actionFavoritePrevMatchFragmentToDetailMatchFragment"
-            app:destination="@id/detailMatchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
+        tools:layout="@layout/fragment_favorite_prev_match"/>
 
 </navigation>

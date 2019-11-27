@@ -22,7 +22,8 @@ import org.jetbrains.anko.db.select
 class FavoritePrevMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPressedListener {
 
     override fun onFavoriteMatchPressed(favorite: Favorite, position: Int) {
-        launchMatchDetail(favorite.idEvent, favorite.type)
+        val action = FavoriteMatchFragmentDirections.actionFavoriteFragmentToDetailMatchFragment(favorite.idEvent, favorite.type)
+        findNavController().navigate(action)
     }
 
     private lateinit var binding: FragmentFavoritePrevMatchBinding
@@ -66,12 +67,6 @@ class FavoritePrevMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPre
             showData()
             hideLayoutEmpty()
         }
-    }
-
-    private fun launchMatchDetail(idEvent: String, type: String) {
-        val action =
-            FavoritePrevMatchFragmentDirections.actionFavoritePrevMatchFragmentToDetailMatchFragment(idEvent, type)
-        findNavController().navigate(action)
     }
 
     private fun showData() {
