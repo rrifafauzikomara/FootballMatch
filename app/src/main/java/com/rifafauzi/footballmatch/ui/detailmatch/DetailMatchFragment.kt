@@ -82,17 +82,17 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     is Result.NoData -> {
                         hideMatch()
                         hideLoading()
-                        longSnackBar("Data not Found")
+                        longSnackBar(resources.getString(R.string.empty_data))
                     }
                     is Result.Error -> {
                         hideMatch()
                         hideLoading()
-                        longSnackBar("Unknown Error")
+                        longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hideMatch()
                         hideLoading()
-                        longSnackBar("No Internet Connection")
+                        longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
             }
@@ -217,7 +217,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     Favorite.TYPE to type
                 )
             }
-            snackBar("Added to Favorite")
+            snackBar(resources.getString(R.string.add_to_favorite))
         } catch (e: SQLiteConstraintException){
             Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
         }
@@ -232,7 +232,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
                     "id" to idEvent
                 )
             }
-            snackBar("Removed from favorite")
+            snackBar(resources.getString(R.string.delete_from_favorite))
             findNavController().navigateUp()
         } catch (e: SQLiteConstraintException) {
             Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -249,9 +249,11 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
     }
 
     private fun displayData(data: List<Match>) {
-        binding.data = data[0]
-        vm.getDetailTeamHome(data[0].idHomeTeam)
-        vm.getDetailTeamAway(data[0].idAwayTeam)
+        with(data[0]){
+            binding.data = this
+            vm.getDetailTeamHome(idHomeTeam)
+            vm.getDetailTeamAway(idAwayTeam)
+        }
     }
 
     private fun displayTeamLogo(teamUrl: String?, teamImage: ImageView, transition: DrawableCrossFadeFactory) {

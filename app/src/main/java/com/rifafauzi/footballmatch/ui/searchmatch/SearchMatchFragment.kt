@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.adapter.MatchAdapter
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
@@ -25,7 +26,7 @@ import com.rifafauzi.footballmatch.utils.NEXT_MATCH
  */
 class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatchViewModel>(), MatchAdapter.OnMatchPressedListener {
 
-    override fun getLayoutResourceId() = com.rifafauzi.footballmatch.R.layout.fragment_search_match
+    override fun getLayoutResourceId() = R.layout.fragment_search_match
     override fun getViewModelClass() = SearchMatchViewModel::class.java
 
     private val adapter = MatchAdapter(this)
@@ -51,17 +52,17 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
                     is Result.NoData -> {
                         hideSearchMatch()
                         hideLoading()
-                        longSnackBar("Data not Found")
+                        longSnackBar(resources.getString(R.string.empty_data))
                     }
                     is Result.Error -> {
                         hideSearchMatch()
                         hideLoading()
-                        longSnackBar("Unknown Error")
+                        longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hideSearchMatch()
                         hideLoading()
-                        longSnackBar("No Internet Connection")
+                        longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
             }
@@ -69,14 +70,14 @@ class SearchMatchFragment : BaseFragment<FragmentSearchMatchBinding, SearchMatch
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(com.rifafauzi.footballmatch.R.menu.search_match, menu)
-        val searchView = menu.findItem(com.rifafauzi.footballmatch.R.id.action_search)
+        inflater.inflate(R.menu.search_match, menu)
+        val searchView = menu.findItem(R.id.action_search)
         searchView.expandActionView()
         val actionView = searchView.actionView as SearchView
         actionView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {
-                    snackBar("Query don't empty")
+                    snackBar(resources.getString(R.string.match_empty))
                 }
                 return false
             }

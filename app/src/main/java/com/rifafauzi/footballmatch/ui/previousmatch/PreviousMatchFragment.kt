@@ -52,17 +52,17 @@ class PreviousMatchFragment : BaseFragment<FragmentPreviousMatchBinding, Previou
                     is Result.NoData -> {
                         hidePrevMatch()
                         hideLoading()
-                        longSnackBar("Data not Found")
+                        longSnackBar(resources.getString(R.string.empty_data))
                     }
                     is Result.Error -> {
                         hidePrevMatch()
                         hideLoading()
-                        longSnackBar("Unknown Error")
+                        longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hidePrevMatch()
                         hideLoading()
-                        longSnackBar("No Internet Connection")
+                        longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
             }

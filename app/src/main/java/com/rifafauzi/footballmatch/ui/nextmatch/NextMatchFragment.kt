@@ -52,17 +52,17 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
                     is Result.NoData -> {
                         hideNextMatch()
                         hideLoading()
-                        longSnackBar("Data not Found")
+                        longSnackBar(resources.getString(R.string.empty_data))
                     }
                     is Result.Error -> {
                         hideNextMatch()
                         hideLoading()
-                        longSnackBar("Unknown Error")
+                        longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hideNextMatch()
                         hideLoading()
-                        longSnackBar("No Internet Connection")
+                        longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
             }

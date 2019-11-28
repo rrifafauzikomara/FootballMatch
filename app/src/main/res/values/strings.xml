@@ -15,6 +15,9 @@
     <string name="forward">Forward</string>
     <string name="substitutes">Substitutes</string>
     <string name="search">Search</string>
-    <string name="empty_data">Tidak Ada Data</string>
-
+    <string name="empty_data">Data Not Found</string>
+    <string name="no_connection">No Internet Connection</string>
+    <string name="add_to_favorite">Added to Favorite</string>
+    <string name="delete_from_favorite">Removed from Favorite</string>
+    <string name="match_empty">Match Don\'t Empty</string>
 </resources>

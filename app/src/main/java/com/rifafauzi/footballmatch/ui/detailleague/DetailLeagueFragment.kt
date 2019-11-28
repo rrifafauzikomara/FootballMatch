@@ -47,17 +47,17 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
                     is Result.NoData -> {
                         hideLeagues()
                         hideLoading()
-                        longSnackBar("Data not Found")
+                        longSnackBar(resources.getString(R.string.empty_data))
                     }
                     is Result.Error -> {
                         hideLeagues()
                         hideLoading()
-                        longSnackBar("Unknown Error")
+                        longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hideLeagues()
                         hideLoading()
-                        longSnackBar("No Internet Connection")
+                        longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
             }
