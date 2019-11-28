@@ -42,10 +42,13 @@ dependencies {
 
     // Dependencies for Testing
     implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test:runner:$testVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    // Dependencies for Mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
 
     // Dependencies for Material Component
     implementation "androidx.cardview:cardview:$cardVersion"

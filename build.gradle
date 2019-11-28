@@ -49,10 +49,11 @@ ext {
     rxJavaVersion = '2.2.9'
     glideVersion = '4.9.0'
     dagger_version = '2.23'
-    retrofitVersion= '2.6.0'
+    retrofitVersion = '2.6.0'
     logingVersion = '3.10.0'
     timber_version = '4.7.1'
     shimmer_version = '0.5.0'
     multidex_version = '1.0.3'
-    anko_version='0.10.8'
+    anko_version = '0.10.8'
+    mockitoVersion = '3.0.0'
 }
