@@ -56,4 +56,5 @@ ext {
     multidex_version = '1.0.3'
     anko_version = '0.10.8'
     mockitoVersion = '3.0.0'
+    core_testing_version = '1.1.1'
 }
