@@ -51,19 +51,17 @@ class SearchFragmentTest {
         // open detail league and show data
         onView(withId(R.id.layoutDetailLeagues)).check(matches(isDisplayed()))
         Thread.sleep(1000)
-        onView(withId(R.id.btnSearchMatch)).perform(click())
+        onView(withId(R.id.imgSearch)).perform(click())
 
         // open search match and search match empty
         onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(stringEmpty))
             .perform(pressImeActionButton())
         Thread.sleep(1000)
 
-
         // remove text in search view
         onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(clearText())
             .perform(pressImeActionButton())
         Thread.sleep(1000)
-
 
         // search again with close the keyboard
         onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(stringToBeTyped), closeSoftKeyboard())

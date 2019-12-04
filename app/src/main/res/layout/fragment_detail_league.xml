@@ -73,18 +73,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/btnSearchMatch"
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/ic_search"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{()->fragment.onPressedSearchMatch()}"
-                        android:background="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnNextMatch"
-                        app:layout_constraintStart_toEndOf="@+id/btnPrevMatch"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <Button
                         android:id="@+id/btnNextMatch"
                         android:layout_width="140dp"

@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setupToolbar()
         setupNavController()
         setupBottomNavigation()
+        openSearchMatch()
 
     }
 
@@ -85,41 +86,49 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             when (destination.id) {
                 R.id.leaguesFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(false)
                     showBottomNavigation(true)
                 }
                 R.id.favoriteFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(false)
                     showBottomNavigation(true)
                 }
                 R.id.detailLeagueFragment -> {
                     showToolbar(true)
+                    showImageSearch()
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
                 R.id.nextMatchFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
                 R.id.previousFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
                 R.id.detailMatchFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
                 R.id.searchMatchFragment -> {
                     showToolbar(true)
+                    hideImageSearch()
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
                 else -> {
                     showToolbar(false)
+                    hideImageSearch()
                     showToolbarBackArrow(false)
                     showBottomNavigation(false)
                 }
@@ -143,5 +152,19 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun onSupportNavigateUp() : Boolean {
         navController.navigateUp()
         return true
+    }
+
+    private fun showImageSearch() {
+        binding.imgSearch.visibility = View.VISIBLE
+    }
+
+    private fun hideImageSearch() {
+        binding.imgSearch.visibility = View.GONE
+    }
+
+    private fun openSearchMatch() {
+        binding.imgSearch.setOnClickListener {
+            navController.navigate(R.id.searchMatchFragment)
+        }
     }
 }
