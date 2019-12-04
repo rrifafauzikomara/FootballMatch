@@ -9,6 +9,7 @@ import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.model.match.Match
 import com.rifafauzi.footballmatch.model.match.MatchResponse
 import com.rifafauzi.footballmatch.repository.match.MatchRepository
+import com.rifafauzi.footballmatch.utils.EspressoIdlingResource
 import com.rifafauzi.footballmatch.utils.TYPE_SPORT
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,6 +27,7 @@ class SearchMatchViewModel @Inject constructor(private val repository: MatchRepo
         get() = _searchMatch
 
     fun searchMatch(query: String) {
+        EspressoIdlingResource.increment()
         mCompositeDisposable += repository.searchMatch(query)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }
@@ -33,6 +35,9 @@ class SearchMatchViewModel @Inject constructor(private val repository: MatchRepo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Match>>() {
                 override fun onSuccess(response: List<Match>) {
+                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                     if (response.isEmpty()) {
                         setResultMatch(Result.NoData())
                         return

@@ -55,6 +55,9 @@ dependencies {
     }
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
+    // Dependencies for Idle Resource
+    implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
+
     // Dependencies for Mockito
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"

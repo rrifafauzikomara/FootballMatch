@@ -12,6 +12,7 @@ import com.rifafauzi.footballmatch.model.teams.Team
 import com.rifafauzi.footballmatch.model.teams.TeamResponse
 import com.rifafauzi.footballmatch.repository.match.MatchRepository
 import com.rifafauzi.footballmatch.repository.teams.TeamsRepository
+import com.rifafauzi.footballmatch.utils.EspressoIdlingResource
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -36,6 +37,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
         get() = _awayTeam
 
     fun getDetailMatch(idEvent: String) {
+        EspressoIdlingResource.increment()
         mCompositeDisposable += repository.getDetailMatch(idEvent)
             .map { transformData(it) }
             .doOnSubscribe { setResultMatch(Result.Loading()) }
@@ -43,6 +45,9 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Match>>() {
                 override fun onSuccess(response: List<Match>) {
+                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                     if (response.isEmpty()) {
                         setResultMatch(Result.NoData())
                         return
@@ -103,6 +108,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
     }
 
     fun getDetailTeamHome(idTeam: String?) {
+        EspressoIdlingResource.increment()
         mCompositeDisposable += repositoryTeam.getTeam(idTeam)
             .map { transformDataHomeTeam(it) }
             .doOnSubscribe { setResultHomeTeam(Result.Loading()) }
@@ -110,6 +116,9 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Team>>() {
                 override fun onSuccess(response: List<Team>) {
+                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                     if (response.isEmpty()) {
                         setResultHomeTeam(Result.NoData())
                         return
@@ -147,6 +156,7 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
     }
 
     fun getDetailTeamAway(idTeam: String?) {
+        EspressoIdlingResource.increment()
         mCompositeDisposable += repositoryTeam.getTeam(idTeam)
             .map { transformDataAwayTeam(it) }
             .doOnSubscribe { setResultAwayTeam(Result.Loading()) }
@@ -154,6 +164,9 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Team>>() {
                 override fun onSuccess(response: List<Team>) {
+                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                     if (response.isEmpty()) {
                         setResultAwayTeam(Result.NoData())
                         return
