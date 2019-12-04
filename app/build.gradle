@@ -58,6 +58,8 @@ dependencies {
     // Dependencies for Mockito
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoTestVersion"
 
     // Dependencies for Material Component
     implementation "androidx.cardview:cardview:$cardVersion"

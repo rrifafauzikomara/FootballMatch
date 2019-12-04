@@ -35,6 +35,7 @@
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutDetailLeagues"
                 android:layout_width="match_parent"
                 android:visibility="@{showData ? View.VISIBLE : View.GONE}"
                 android:layout_height="wrap_content">

@@ -1,19 +1,21 @@
 package com.rifafauzi.footballmatch
 
-import androidx.fragment.app.testing.launchFragmentInContainer
+import android.widget.AutoCompleteTextView
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment
+import com.rifafauzi.footballmatch.ui.main.MainActivity
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito.mock
 
 
 /**
@@ -23,21 +25,49 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SearchFragmentTest {
 
-    @Test
-    fun goToSearchMatchFragment() {
-        // Create a mock NavController
-        val mockNavController = mock(NavController::class.java)
+    @Rule
+    @JvmField var activityRule = ActivityTestRule(MainActivity::class.java)
 
-        // Create a graphical FragmentScenario for the TitleScreen
-        val openLeaguesFragment = launchFragmentInContainer<LeaguesFragment>()
-        openLeaguesFragment.onFragment { fragment ->
-            Navigation.setViewNavController(fragment.requireView(), mockNavController)
-        }
+    private lateinit var stringEmpty: String
+    private lateinit var stringToBeTyped: String
 
-        // Verify that performing a click prompts the correct Navigation action
-        onView(withId(R.id.rvLeagues)).check(matches(isDisplayed()))
-        onView(withId(R.id.rvLeagues)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-        verify(mockNavController).navigate(R.id.detailLeagueFragment)
+    @Before
+    fun initValidString() {
+        // Specify a valid string.
+        stringEmpty = "aaa"
+        stringToBeTyped = "Arsenal"
     }
 
+    @Test
+    fun goToSearchMatchFragment() {
+        // init NavController
+        mock(NavController::class.java)
+
+        // display RV in leagues fragment
+        onView(withId(R.id.rvLeagues)).check(matches(isDisplayed()))
+        Thread.sleep(1000)
+        onView(withId(R.id.rvLeagues)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        // open detail league and show data
+        onView(withId(R.id.layoutDetailLeagues)).check(matches(isDisplayed()))
+        Thread.sleep(1000)
+        onView(withId(R.id.btnSearchMatch)).perform(click())
+
+        // open search match and search match empty
+        onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(stringEmpty))
+            .perform(pressImeActionButton())
+        Thread.sleep(1000)
+
+
+        // remove text in search view
+        onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(clearText())
+            .perform(pressImeActionButton())
+        Thread.sleep(1000)
+
+
+        // search again with close the keyboard
+        onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(stringToBeTyped), closeSoftKeyboard())
+            .perform(pressImeActionButton())
+        Thread.sleep(1000)
+    }
 }
