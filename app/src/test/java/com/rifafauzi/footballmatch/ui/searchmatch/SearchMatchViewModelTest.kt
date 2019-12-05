@@ -10,11 +10,9 @@ import com.rifafauzi.footballmatch.repository.match.MatchRepository
 import com.rifafauzi.footballmatch.utils.RxImmediateSchedulerRule
 import com.rifafauzi.footballmatch.utils.mock
 import io.reactivex.Observable
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito

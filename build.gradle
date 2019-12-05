@@ -44,7 +44,7 @@ ext {
     constraintLayoutVersion = '1.1.3'
     androidXAnnotations = '1.0.1'
     navigationVersion = '2.1.0'
-    archLifecycleVersion = '2.2.0-rc02'
+    archLifecycleVersion = '2.2.0-rc03'
     rxAndroidVersion = '2.1.1'
     rxJavaVersion = '2.2.9'
     glideVersion = '4.9.0'
