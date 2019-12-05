@@ -123,5 +123,10 @@
         android:id="@+id/favoritePrevMatchFragment"
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoritePrevMatchFragment"
         tools:layout="@layout/fragment_favorite_prev_match"/>
+    <fragment
+        android:id="@+id/favoriteTeamFragment"
+        android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteTeamFragment"
+        android:label="fragment_favorite_team"
+        tools:layout="@layout/fragment_favorite_team" />
 
 </navigation>

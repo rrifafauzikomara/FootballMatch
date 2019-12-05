@@ -40,10 +40,12 @@ class FavoriteMatchFragment : Fragment() {
 
         val tabPrevMatch = requireContext().resources.getString(R.string.previous_match)
         val tabNextMatch = requireContext().resources.getString(R.string.next_match)
+        val tabTeam = requireContext().resources.getString(R.string.team)
 
         viewPagerAdapter = ViewPagerFragment(childFragmentManager)
         viewPagerAdapter.addFragment(FavoritePrevMatchFragment(), tabPrevMatch)
         viewPagerAdapter.addFragment(FavoriteNextMatchFragment(), tabNextMatch)
+        viewPagerAdapter.addFragment(FavoriteTeamFragment(), tabTeam)
 
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager,true)
