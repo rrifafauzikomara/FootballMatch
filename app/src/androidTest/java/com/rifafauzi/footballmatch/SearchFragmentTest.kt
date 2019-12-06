@@ -59,7 +59,7 @@ class SearchFragmentTest {
         onView(withId(R.id.rvLeagues)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
         // open detail league and show data
-        onView(withId(R.id.layoutDetailLeagues)).check(matches(isDisplayed()))
+        onView(withId(R.id.appBarLayoutDetailLeagues)).check(matches(isDisplayed()))
         onView(withId(R.id.imgSearch)).perform(click())
 
         // open search match and search match empty

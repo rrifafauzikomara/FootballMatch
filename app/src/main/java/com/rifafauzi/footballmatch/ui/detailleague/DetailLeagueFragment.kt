@@ -1,16 +1,21 @@
 package com.rifafauzi.footballmatch.ui.detailleague
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.rifafauzi.footballmatch.R
+import com.rifafauzi.footballmatch.adapter.ViewPagerFragment
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentDetailLeagueBinding
 import com.rifafauzi.footballmatch.model.leagues.Leagues
+import com.rifafauzi.footballmatch.ui.nextmatch.NextMatchFragment
+import com.rifafauzi.footballmatch.ui.previousmatch.PreviousMatchFragment
+import com.rifafauzi.footballmatch.ui.standings.StandingsFragment
+import com.rifafauzi.footballmatch.ui.teams.TeamFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -18,18 +23,50 @@ import com.rifafauzi.footballmatch.model.leagues.Leagues
 class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLeagueViewModel>() {
 
     override fun getLayoutResourceId() = R.layout.fragment_detail_league
-
     override fun getViewModelClass() = DetailLeagueViewModel::class.java
 
     private var idLeague: String? = null
 
+    private lateinit var viewPager : ViewPager
+    private lateinit var viewPagerAdapter : ViewPagerFragment
+    private lateinit var tabLayout : TabLayout
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewPager = binding.viewPagerDetailLeagues
+        tabLayout = binding.tabLayoutDetailLeagues
 
         arguments?.let {
             val safeArgs = DetailLeagueFragmentArgs.fromBundle(it)
             idLeague = safeArgs.idLeague
         }
+
+        val previousMatchFragment = PreviousMatchFragment()
+        val nextMatchFragment = NextMatchFragment()
+        val teamFragment = TeamFragment()
+        val standingsFragment = StandingsFragment()
+
+        val bundle = Bundle()
+        bundle.putString("idLeague", idLeague)
+        nextMatchFragment.arguments = bundle
+        previousMatchFragment.arguments = bundle
+        teamFragment.arguments = bundle
+        standingsFragment.arguments = bundle
+
+        val tabPrevMatch = requireContext().resources.getString(R.string.previous_match)
+        val tabNextMatch = requireContext().resources.getString(R.string.next_match)
+        val tabTeam = requireContext().resources.getString(R.string.team)
+        val tabStandings = requireContext().resources.getString(R.string.standings)
+
+        viewPagerAdapter = ViewPagerFragment(childFragmentManager)
+        viewPagerAdapter.addFragment(previousMatchFragment, tabPrevMatch)
+        viewPagerAdapter.addFragment(nextMatchFragment, tabNextMatch)
+        viewPagerAdapter.addFragment(teamFragment, tabTeam)
+        viewPagerAdapter.addFragment(standingsFragment, tabStandings)
+
+        viewPager.adapter = viewPagerAdapter
+        tabLayout.setupWithViewPager(viewPager,true)
 
         vm.getDetailLeague(idLeague)
         vm.detailLeague.observe(viewLifecycleOwner, Observer {
@@ -65,26 +102,8 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
 
     }
 
-    fun onPressedPrevMatch() {
-        launchPreviousMatch()
-    }
-
-    fun onPressedNextMatch() {
-        launchNextMatch()
-    }
-
-    private fun launchNextMatch() {
-        val action = DetailLeagueFragmentDirections.actionLaunchNextMatchFragment(idLeague)
-        findNavController().navigate(action)
-    }
-
-    private fun launchPreviousMatch() {
-        val action = DetailLeagueFragmentDirections.actionLaunchPreviousFragment(idLeague)
-        findNavController().navigate(action)
-    }
-
     private fun displayData(data: List<Leagues>) {
-        binding.data = data[0]
+        binding.contentDetailLeagues.data = data[0]
     }
 
     private fun showLoading() {

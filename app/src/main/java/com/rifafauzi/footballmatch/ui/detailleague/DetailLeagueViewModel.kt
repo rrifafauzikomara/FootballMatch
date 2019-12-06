@@ -9,7 +9,6 @@ import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.model.leagues.Leagues
 import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
 import com.rifafauzi.footballmatch.repository.leagues.LeaguesRepository
-import com.rifafauzi.footballmatch.utils.EspressoIdlingResource
 import com.rifafauzi.footballmatch.utils.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -26,7 +25,6 @@ class DetailLeagueViewModel @Inject constructor(private val repository: LeaguesR
         get() = _detailLeague
 
     fun getDetailLeague(idLeague: String?) {
-        EspressoIdlingResource.increment()
         mCompositeDisposable += repository.getDetailLeague(idLeague)
             .map { transformData(it) }
             .doOnSubscribe { setResultDetailLeague(Result.Loading()) }
@@ -34,9 +32,6 @@ class DetailLeagueViewModel @Inject constructor(private val repository: LeaguesR
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Leagues>>() {
                 override fun onSuccess(response: List<Leagues>) {
-                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
-                        EspressoIdlingResource.decrement()
-                    }
                     if (response.isEmpty()) {
                         setResultDetailLeague(Result.NoData())
                         return
@@ -72,7 +67,8 @@ class DetailLeagueViewModel @Inject constructor(private val repository: LeaguesR
                     i.strSport,
                     i.strDescriptionEN,
                     i.strBadge,
-                    i.strCountry
+                    i.strCountry,
+                    i.strTrophy
                 )
             )
         }

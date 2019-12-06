@@ -30,5 +30,8 @@ data class Leagues(
     val strBadge: String?,
 
     @SerializedName("strCountry")
-    val strCountry: String?
+    val strCountry: String?,
+
+    @SerializedName("strTrophy")
+    val strTrophy: String?
 )

@@ -8,14 +8,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="data"
-            type="com.rifafauzi.footballmatch.model.leagues.Leagues" />
-
-        <variable
-            name="fragment"
-            type="com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueFragment" />
-
-        <variable
             name="showLoading"
             type="Boolean" />
 
@@ -25,156 +17,75 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.detailleague.DetailLeagueFragment">
 
-        <ScrollView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayoutDetailLeagues"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:fitsSystemWindows="true"
+            android:background="@color/colorPrimary"
+            android:visibility="@{showData ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutDetailLeagues"
-                android:layout_width="match_parent"
-                android:visibility="@{showData ? View.VISIBLE : View.GONE}"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageDetailLeague"
-                    imageUrl="@{data.strBanner}"
-                    android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/ic_no_data"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="contentDescription"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layoutMatch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageDetailLeague">
-
-                    <Button
-                        android:id="@+id/btnPrevMatch"
-                        android:layout_width="140dp"
-                        android:background="@color/colorPrimary"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:onClick="@{()->fragment.onPressedPrevMatch()}"
-                        android:text="@string/previous_match"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/btnNextMatch"
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/next_match"
-                        android:background="@color/colorPrimary"
-                        android:textColor="@color/white"
-                        android:onClick="@{()->fragment.onPressedNextMatch()}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/dateDetailLeague"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/colorAccent"
-                    android:layout_marginTop="16dp"
-                    android:text="@{data.dateFirstEvent}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutMatch"
-                    tools:text="23 November 2019" />
-
-                <TextView
-                    android:id="@+id/sportDetailLeague"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@{data.strSport}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutMatch"
-                    tools:text="Soccer" />
-
-                <TextView
-                    android:id="@+id/countryDetailLeague"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@{data.strCountry}"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dateDetailLeague"
-                    tools:text="Country" />
-
-                <TextView
-                    android:id="@+id/titleDetailLeague"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@{data.strLeague}"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/countryDetailLeague"
-                    tools:text="Title" />
-
-                <TextView
-                    android:id="@+id/descDetailLeague"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@{data.strDescriptionEN}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titleDetailLeague"
-                    tools:text="Description" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerDetailLeague"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                android:fitsSystemWindows="true">
 
-                <include layout="@layout/shimmer_leagues" />
+                <include
+                    android:id="@+id/contentDetailLeagues"
+                    layout="@layout/card_detail_leagues"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp" />
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutDetailLeagues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/white" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerDetailLeagues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayoutDetailLeagues"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerDetailLeague"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/shimmer_leagues" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

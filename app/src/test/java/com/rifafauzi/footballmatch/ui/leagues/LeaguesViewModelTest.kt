@@ -64,7 +64,8 @@ class LeaguesViewModelTest {
                     data.strSport,
                     data.strDescriptionEN,
                     data.strBadge,
-                    data.strCountry
+                    data.strCountry,
+                    data.strTrophy
                 )
             )
         )

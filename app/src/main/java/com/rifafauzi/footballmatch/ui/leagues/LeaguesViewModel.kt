@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseResponse
 import com.rifafauzi.footballmatch.base.BaseViewModel
+import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.model.leagues.Leagues
 import com.rifafauzi.footballmatch.model.leagues.LeaguesResponse
 import com.rifafauzi.footballmatch.repository.leagues.LeaguesRepository
 import com.rifafauzi.footballmatch.utils.plusAssign
-import com.rifafauzi.footballmatch.common.Result
-import com.rifafauzi.footballmatch.utils.EspressoIdlingResource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -26,7 +25,6 @@ class LeaguesViewModel @Inject constructor(private val repository: LeaguesReposi
         get() = _leagues
 
     fun getListLeagues() {
-        EspressoIdlingResource.increment()
         mCompositeDisposable += repository.getListLeagues()
             .map { transformData(it) }
             .doOnSubscribe { setResultListLeagues(Result.Loading()) }
@@ -34,9 +32,6 @@ class LeaguesViewModel @Inject constructor(private val repository: LeaguesReposi
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : BaseResponse<List<Leagues>>() {
                 override fun onSuccess(response: List<Leagues>) {
-                    if (!EspressoIdlingResource.idlingResource.isIdleNow) {
-                        EspressoIdlingResource.decrement()
-                    }
                     if (response.isEmpty()) {
                         setResultListLeagues(Result.NoData())
                         return
@@ -72,7 +67,8 @@ class LeaguesViewModel @Inject constructor(private val repository: LeaguesReposi
                     i.strSport,
                     i.strDescriptionEN,
                     i.strBadge,
-                    i.strCountry
+                    i.strCountry,
+                    i.strTrophy
                 )
             )
         }

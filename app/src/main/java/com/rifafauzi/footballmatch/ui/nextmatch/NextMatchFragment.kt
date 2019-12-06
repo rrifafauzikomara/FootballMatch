@@ -13,6 +13,7 @@ import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentNextMatchBinding
 import com.rifafauzi.footballmatch.model.match.Match
+import com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueFragmentDirections
 import com.rifafauzi.footballmatch.utils.NEXT_MATCH
 
 /**
@@ -31,10 +32,7 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
 
         initRecyclerView()
 
-        arguments?.let {
-            val safeArgs = NextMatchFragmentArgs.fromBundle(it)
-            idLeague = safeArgs.idLeague
-        }
+        idLeague = arguments?.getString("idLeague")
 
         vm.getNextMatch(idLeague)
         vm.nextMatch.observe(viewLifecycleOwner, Observer {
@@ -42,26 +40,30 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
                 when (it) {
                     is Result.Loading -> {
                         hideNextMatch()
+                        hideLayoutEmpty()
                         showLoading()
                     }
                     is Result.HasData -> {
                         showNextMatch()
                         hideLoading()
+                        hideLayoutEmpty()
                         refreshData(it.data)
                     }
                     is Result.NoData -> {
                         hideNextMatch()
                         hideLoading()
-                        longSnackBar(resources.getString(R.string.empty_data))
+                        showLayoutEmpty()
                     }
                     is Result.Error -> {
                         hideNextMatch()
                         hideLoading()
+                        hideLayoutEmpty()
                         longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
                         hideNextMatch()
                         hideLoading()
+                        hideLayoutEmpty()
                         longSnackBar(resources.getString(R.string.no_connection))
                     }
                 }
@@ -75,7 +77,7 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
     }
 
     private fun launchDetailMatch(idEvent: String) {
-        val action = NextMatchFragmentDirections.actionNextMatchFragmentToDetailMatchFragment(idEvent, NEXT_MATCH)
+        val action = DetailLeagueFragmentDirections.actionLaunchDetailMatchFragment(idEvent, NEXT_MATCH)
         findNavController().navigate(action)
     }
 
@@ -103,5 +105,13 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
 
     private fun hideNextMatch() {
         binding.showData = false
+    }
+
+    private fun showLayoutEmpty() {
+        binding.layoutEmptyData.visibility = View.VISIBLE
+    }
+
+    private fun hideLayoutEmpty() {
+        binding.layoutEmptyData.visibility = View.GONE
     }
 }

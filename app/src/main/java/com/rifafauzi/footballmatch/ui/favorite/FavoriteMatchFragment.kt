@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.rifafauzi.footballmatch.R
+import com.rifafauzi.footballmatch.adapter.ViewPagerFragment
 import com.rifafauzi.footballmatch.databinding.FragmentFavoriteMatchBinding
 
 /**
@@ -49,29 +48,6 @@ class FavoriteMatchFragment : Fragment() {
 
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager,true)
-    }
-
-    class ViewPagerFragment(manager: FragmentManager) : FragmentPagerAdapter(manager) {
-
-        private val mFragmentList: ArrayList<Fragment> = ArrayList()
-        private val mFragmentTitleList: ArrayList<String> = ArrayList()
-
-        override fun getItem(position: Int): Fragment {
-            return mFragmentList[position]
-        }
-
-        override fun getCount(): Int {
-            return mFragmentList.size
-        }
-
-        fun addFragment(fragment: Fragment, title: String) {
-            mFragmentList.add(fragment)
-            mFragmentTitleList.add(title)
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return mFragmentTitleList[position]
-        }
     }
 
 }

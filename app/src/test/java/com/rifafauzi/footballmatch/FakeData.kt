@@ -20,7 +20,8 @@ object FakeData {
                 "Soccer",
                 "The Primera División (Spanish pronunciation: ; English: First Division), named Superliga Argentina (English: Argentine Superleague) since the 2017–18 season, is a professional football league in Argentina, organised by the homonymous entity, that is administrated independently and has its own statute.",
                 "https://www.thesportsdb.com/images/media/league/badge/me5dez1517699947.png",
-                "Argentina"
+                "Argentina",
+                "https://www.thesportsdb.com/images/media/league/trophy/xrvqvx1422244125.png"
             ),
             Leagues(
                 "4500",
@@ -30,7 +31,8 @@ object FakeData {
                 "Soccer",
                 "The Copa Argentina (English: Argentine Cup), officially known as the \\\"Copa Total Argentina\\\" due to sponsorship reasons, is an official football cup competition organized by the Argentine Football Association (AFA), with the aim of qualifying one club to the Copa Libertadores.",
                 "https://www.thesportsdb.com/images/media/league/badge/mekufm1549460132.png",
-                "Argentina"
+                "Argentina",
+                null
             ),
             Leagues(
                 "4356",
@@ -40,7 +42,8 @@ object FakeData {
                 "Soccer",
                 "The A-League is a professional men's soccer league, run by Football Federation Australia (FFA). At the top of the Australian league system, it is the country's primary competition for the sport",
                 "https://www.thesportsdb.com/images/media/league/badge/sfhanl1547383730.png",
-                "Australia"
+                "Australia",
+                "https://www.thesportsdb.com/images/media/league/trophy/uxssyx1422266419.png"
             ),
             Leagues(
                 "4338",
@@ -50,7 +53,8 @@ object FakeData {
                 "Soccer",
                 "The Belgian Pro League (officially known as Jupiler Pro League ) is the top league competition for association football clubs in Belgium. Contested by 16 clubs, it operates on a system of promotion and relegation with the Belgian Second Division",
                 "https://www.thesportsdb.com/images/media/league/badge/8y3jti1564838854.png",
-                "Belgium"
+                "Belgium",
+                "https://www.thesportsdb.com/images/media/league/trophy/tvuvwy1422267731.png"
             ),Leagues(
                 "4404",
                 "Brazilian Brasileirao Serie B",
@@ -59,7 +63,8 @@ object FakeData {
                 "Soccer",
                 "The Campeonato Brasileiro Série B, commonly referred to as the Brasileirão Série B or simply Série B is the second tier of the Brazilian football league system.",
                 "https://www.thesportsdb.com/images/media/league/badge/0206v41534575321.png",
-                "Brazil"
+                "Brazil",
+                "https://www.thesportsdb.com/images/media/league/trophy/uxxrxw1422277703.png"
             )
         )
     }

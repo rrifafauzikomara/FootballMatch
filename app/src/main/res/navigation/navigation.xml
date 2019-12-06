@@ -28,15 +28,8 @@
             app:argType="string"
             app:nullable="true"/>
         <action
-            android:id="@+id/actionLaunchNextMatchFragment"
-            app:destination="@id/nextMatchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/actionLaunchPreviousFragment"
-            app:destination="@id/previousFragment"
+            android:id="@+id/actionLaunchDetailMatchFragment"
+            app:destination="@id/detailMatchFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -51,13 +44,6 @@
             android:name="idLeague"
             app:argType="string"
             app:nullable="true"/>
-        <action
-            android:id="@+id/actionNextMatchFragmentToDetailMatchFragment"
-            app:destination="@id/detailMatchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/previousFragment"
@@ -68,13 +54,6 @@
             android:name="idLeague"
             app:argType="string"
             app:nullable="true"/>
-        <action
-            android:id="@+id/actionPreviousFragmentToDetailMatchFragment"
-            app:destination="@id/detailMatchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/searchMatchFragment"
@@ -128,5 +107,48 @@
         android:name="com.rifafauzi.footballmatch.ui.favorite.FavoriteTeamFragment"
         android:label="fragment_favorite_team"
         tools:layout="@layout/fragment_favorite_team" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.rifafauzi.footballmatch.ui.teams.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <action
+            android:id="@+id/action_teamFragment_to_detailTeamFragment"
+            app:destination="@id/detailTeamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/standingsFragment"
+        android:name="com.rifafauzi.footballmatch.ui.standings.StandingsFragment"
+        android:label="fragment_standings"
+        tools:layout="@layout/fragment_standings" />
+    <fragment
+        android:id="@+id/detailTeamFragment"
+        android:name="com.rifafauzi.footballmatch.DetailTeamFragment"
+        android:label="fragment_detail_team"
+        tools:layout="@layout/fragment_detail_team" >
+        <action
+            android:id="@+id/action_detailTeamFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamOverviewFragment"
+        android:name="com.rifafauzi.footballmatch.TeamOverviewFragment"
+        android:label="fragment_team_overview"
+        tools:layout="@layout/fragment_team_overview" />
+    <fragment
+        android:id="@+id/playerListFragment"
+        android:name="com.rifafauzi.footballmatch.PlayerListFragment"
+        android:label="fragment_player_list"
+        tools:layout="@layout/fragment_player_list" />
+    <fragment
+        android:id="@+id/playerDetailFragment"
+        android:name="com.rifafauzi.footballmatch.PlayerDetailFragment"
+        android:label="fragment_player_detail"
+        tools:layout="@layout/fragment_player_detail" />
+    <fragment
+        android:id="@+id/searchTeamFragment"
+        android:name="com.rifafauzi.footballmatch.SearchTeamFragment"
+        android:label="fragment_search_team"
+        tools:layout="@layout/fragment_search_team" />
 
 </navigation>
