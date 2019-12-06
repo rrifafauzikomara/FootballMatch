@@ -198,11 +198,33 @@ object FakeData {
         return listOf(
             Team(
                 "135170",
-                "https://www.thesportsdb.com/images/media/team/badge/jixh121504720274.png"
+                "https://www.thesportsdb.com/images/media/team/badge/jixh121504720274.png",
+                "Racing Club",
+                "Racing Club is an Argentine professional sports club based in Avellaneda, a city of Greater Buenos Aires.",
+                "Argentinian Primera Division",
+                "Estadio Juan Domingo Perón",
+                "Avellaneda, Greater Buenos Aires, Argentina",
+                "The Estadio Juan Domingo Perón is a stadium in Argentina that is the home of Racing Club.",
+                "51389",
+                "Argentina",
+                "https://www.thesportsdb.com/images/media/team/stadium/xxqquu1424078101.jpg",
+                "https://www.thesportsdb.com/images/media/team/jersey/rswyvp1423783959.png",
+                null
             ),
             Team(
                 "135162",
-                "https://www.thesportsdb.com/images/media/team/badge/d3c0ds1517768584.png"
+                "https://www.thesportsdb.com/images/media/team/badge/d3c0ds1517768584.png",
+                "Godoy Cruz",
+                "Club Deportivo Godoy Cruz Antonio Tomba, known simply as Godoy Cruz, is an Argentine sports club from Godoy Cruz, Mendoza.",
+                "Argentinian Primera Division",
+                "Estadio Feliciano Gambarte",
+                "Godoy Cruz, Mendoza, Mendoza Province",
+                "Estadio Feliciano Gambarte is a multi-use stadium in Godoy Cruz, Mendoza, Argentina.",
+                "14000",
+                "Argentina",
+                null,
+                "https://www.thesportsdb.com/images/media/team/jersey/swvyvu1423784034.png",
+                null
             )
         )
     }

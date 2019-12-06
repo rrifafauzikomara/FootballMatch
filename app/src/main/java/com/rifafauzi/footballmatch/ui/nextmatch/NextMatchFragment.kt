@@ -14,6 +14,7 @@ import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentNextMatchBinding
 import com.rifafauzi.footballmatch.model.match.Match
 import com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueFragmentDirections
+import com.rifafauzi.footballmatch.utils.ID_LEAGUES
 import com.rifafauzi.footballmatch.utils.NEXT_MATCH
 
 /**
@@ -32,7 +33,7 @@ class NextMatchFragment : BaseFragment<FragmentNextMatchBinding, NextMatchViewMo
 
         initRecyclerView()
 
-        idLeague = arguments?.getString("idLeague")
+        idLeague = arguments?.getString(ID_LEAGUES)
 
         vm.getNextMatch(idLeague)
         vm.nextMatch.observe(viewLifecycleOwner, Observer {

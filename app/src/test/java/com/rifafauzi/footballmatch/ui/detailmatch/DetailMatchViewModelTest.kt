@@ -102,7 +102,18 @@ class DetailMatchViewModelTest {
             listOf(
                 Team(
                     dataHome.idTeam,
-                    dataHome.strTeamBadge
+                    dataHome.strTeamBadge,
+                    dataHome.strTeam,
+                    dataHome.strDescriptionEN,
+                    dataHome.strLeague,
+                    dataHome.strStadium,
+                    dataHome.strStadiumLocation,
+                    dataHome.strStadiumDescription,
+                    dataHome.intStadiumCapacity,
+                    dataHome.strCountry,
+                    dataHome.strStadiumThumb,
+                    dataHome.strTeamJersey,
+                    dataHome.strTeamBanner
                 )
             )
         )
@@ -120,7 +131,18 @@ class DetailMatchViewModelTest {
             listOf(
                 Team(
                     dataAway.idTeam,
-                    dataAway.strTeamBadge
+                    dataAway.strTeamBadge,
+                    dataAway.strTeam,
+                    dataAway.strDescriptionEN,
+                    dataAway.strLeague,
+                    dataAway.strStadium,
+                    dataAway.strStadiumLocation,
+                    dataAway.strStadiumDescription,
+                    dataAway.intStadiumCapacity,
+                    dataAway.strCountry,
+                    dataAway.strStadiumThumb,
+                    dataAway.strTeamJersey,
+                    dataAway.strTeamBanner
                 )
             )
         )

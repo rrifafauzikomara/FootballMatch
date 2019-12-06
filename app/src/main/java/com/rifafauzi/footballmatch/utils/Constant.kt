@@ -7,3 +7,5 @@ package com.rifafauzi.footballmatch.utils
 const val TYPE_SPORT = "Soccer"
 const val NEXT_MATCH = "NextMatch"
 const val PREV_MATCH = "PrevMatch"
+const val ID_LEAGUES = "idLeague"
+const val ID_TEAM = "idTeam"

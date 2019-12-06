@@ -34,6 +34,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/actionDetailLeagueFragmentToDetailTeamFragment"
+            app:destination="@id/detailTeamFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/nextMatchFragment"
@@ -111,11 +118,7 @@
         android:id="@+id/teamFragment"
         android:name="com.rifafauzi.footballmatch.ui.teams.TeamFragment"
         android:label="fragment_team"
-        tools:layout="@layout/fragment_team" >
-        <action
-            android:id="@+id/action_teamFragment_to_detailTeamFragment"
-            app:destination="@id/detailTeamFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_team" />
     <fragment
         android:id="@+id/standingsFragment"
         android:name="com.rifafauzi.footballmatch.ui.standings.StandingsFragment"
@@ -124,11 +127,18 @@
     <fragment
         android:id="@+id/detailTeamFragment"
         android:name="com.rifafauzi.footballmatch.ui.detailteam.DetailTeamFragment"
-        android:label="fragment_detail_team"
+        android:label="Detail Team"
         tools:layout="@layout/fragment_detail_team" >
         <action
-            android:id="@+id/action_detailTeamFragment_to_playerDetailFragment"
-            app:destination="@id/playerDetailFragment" />
+            android:id="@+id/actionDetailTeamFragmentToPlayerDetailFragment"
+            app:destination="@id/playerDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="idTeam"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/teamOverviewFragment"

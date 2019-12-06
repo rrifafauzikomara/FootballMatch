@@ -5,18 +5,22 @@
 
     <data>
 
+        <variable
+            name="data"
+            type="com.rifafauzi.footballmatch.model.teams.Team" />
+
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -24,21 +28,50 @@
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:id="@+id/image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@string/image" />
+                android:id="@+id/imageTeam"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                imageUrl="@{data.strTeamBadge}"
+                android:contentDescription="@string/image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:id="@+id/nameTeam"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:text="@{data.strTeam}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageTeam"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Arsenal" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/descTeam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/grey_700"
+                android:textSize="12sp"
+                android:text="@{data.strDescriptionEN}"
+                android:maxLines="6"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageTeam"
+                app:layout_constraintTop_toBottomOf="@+id/nameTeam"
+                tools:text="Desc" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

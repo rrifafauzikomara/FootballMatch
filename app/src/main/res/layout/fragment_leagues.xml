@@ -8,14 +8,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="fragment"
-            type="com.rifafauzi.footballmatch.ui.leagues.LeaguesFragment" />
-
-        <variable
-            name="vm"
-            type="com.rifafauzi.footballmatch.ui.leagues.LeaguesViewModel" />
-
-        <variable
             name="showLoading"
             type="Boolean" />
 

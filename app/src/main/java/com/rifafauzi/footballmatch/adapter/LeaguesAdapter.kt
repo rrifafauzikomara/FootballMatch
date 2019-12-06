@@ -31,11 +31,8 @@ class LeaguesAdapter (private val listener: OnLeaguesPressedListener) : ListAdap
             binding.root.setOnClickListener {
                 listener.onLeaguesPressed(model, position)
             }
-
             binding.executePendingBindings()
         }
-
-
     }
 
     companion object {

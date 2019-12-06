@@ -16,6 +16,7 @@ import com.rifafauzi.footballmatch.ui.nextmatch.NextMatchFragment
 import com.rifafauzi.footballmatch.ui.previousmatch.PreviousMatchFragment
 import com.rifafauzi.footballmatch.ui.standings.StandingsFragment
 import com.rifafauzi.footballmatch.ui.teams.TeamFragment
+import com.rifafauzi.footballmatch.utils.ID_LEAGUES
 
 /**
  * A simple [Fragment] subclass.
@@ -48,7 +49,7 @@ class DetailLeagueFragment : BaseFragment<FragmentDetailLeagueBinding, DetailLea
         val standingsFragment = StandingsFragment()
 
         val bundle = Bundle()
-        bundle.putString("idLeague", idLeague)
+        bundle.putString(ID_LEAGUES, idLeague)
         nextMatchFragment.arguments = bundle
         previousMatchFragment.arguments = bundle
         teamFragment.arguments = bundle

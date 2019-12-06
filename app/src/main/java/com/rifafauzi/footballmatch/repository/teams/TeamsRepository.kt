@@ -12,7 +12,15 @@ import javax.inject.Inject
 class TeamsRepository @Inject constructor(private val apiService: ApiService) {
 
     fun getTeam(idTeam: String?) : Observable<TeamResponse> {
-        return apiService.getTeams(idTeam)
+        return apiService.getDetailTeams(idTeam)
+    }
+
+    fun getAllTeams(idLeagues: String?) : Observable<TeamResponse> {
+        return apiService.getAllTeams(idLeagues)
+    }
+
+    fun searchTeams(query: String?) : Observable<TeamResponse> {
+        return apiService.searchTeam(query)
     }
 
 }

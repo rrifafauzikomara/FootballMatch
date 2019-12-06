@@ -139,7 +139,18 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
             team.add(
                 Team(
                     i.idTeam,
-                    i.strTeamBadge
+                    i.strTeamBadge,
+                    i.strTeam,
+                    i.strDescriptionEN,
+                    i.strLeague,
+                    i.strStadium,
+                    i.strStadiumLocation,
+                    i.strStadiumDescription,
+                    i.intStadiumCapacity,
+                    i.strCountry,
+                    i.strStadiumThumb,
+                    i.strTeamJersey,
+                    i.strTeamBanner
                 )
             )
         }
@@ -187,7 +198,18 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
             team.add(
                 Team(
                     i.idTeam,
-                    i.strTeamBadge
+                    i.strTeamBadge,
+                    i.strTeam,
+                    i.strDescriptionEN,
+                    i.strLeague,
+                    i.strStadium,
+                    i.strStadiumLocation,
+                    i.strStadiumDescription,
+                    i.intStadiumCapacity,
+                    i.strCountry,
+                    i.strStadiumThumb,
+                    i.strTeamJersey,
+                    i.strTeamBanner
                 )
             )
         }
