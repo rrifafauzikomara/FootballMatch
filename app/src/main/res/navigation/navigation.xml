@@ -123,7 +123,7 @@
         tools:layout="@layout/fragment_standings" />
     <fragment
         android:id="@+id/detailTeamFragment"
-        android:name="com.rifafauzi.footballmatch.DetailTeamFragment"
+        android:name="com.rifafauzi.footballmatch.ui.detailteam.DetailTeamFragment"
         android:label="fragment_detail_team"
         tools:layout="@layout/fragment_detail_team" >
         <action
@@ -132,22 +132,22 @@
     </fragment>
     <fragment
         android:id="@+id/teamOverviewFragment"
-        android:name="com.rifafauzi.footballmatch.TeamOverviewFragment"
+        android:name="com.rifafauzi.footballmatch.ui.teamoverview.TeamOverviewFragment"
         android:label="fragment_team_overview"
         tools:layout="@layout/fragment_team_overview" />
     <fragment
         android:id="@+id/playerListFragment"
-        android:name="com.rifafauzi.footballmatch.PlayerListFragment"
+        android:name="com.rifafauzi.footballmatch.ui.player.PlayerListFragment"
         android:label="fragment_player_list"
         tools:layout="@layout/fragment_player_list" />
     <fragment
         android:id="@+id/playerDetailFragment"
-        android:name="com.rifafauzi.footballmatch.PlayerDetailFragment"
+        android:name="com.rifafauzi.footballmatch.ui.detailplayer.PlayerDetailFragment"
         android:label="fragment_player_detail"
         tools:layout="@layout/fragment_player_detail" />
     <fragment
         android:id="@+id/searchTeamFragment"
-        android:name="com.rifafauzi.footballmatch.SearchTeamFragment"
+        android:name="com.rifafauzi.footballmatch.ui.searchteam.SearchTeamFragment"
         android:label="fragment_search_team"
         tools:layout="@layout/fragment_search_team" />
 

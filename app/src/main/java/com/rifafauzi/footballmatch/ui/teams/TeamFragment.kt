@@ -7,19 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rifafauzi.footballmatch.R
+import com.rifafauzi.footballmatch.base.BaseFragment
+import com.rifafauzi.footballmatch.databinding.FragmentTeamBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class TeamFragment : Fragment() {
+class TeamFragment : BaseFragment<FragmentTeamBinding, TeamViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team, container, false)
-    }
+    override fun getLayoutResourceId() = R.layout.fragment_team
 
+    override fun getViewModelClass() = TeamViewModel::class.java
 
 }
