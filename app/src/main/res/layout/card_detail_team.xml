@@ -36,7 +36,7 @@
             android:text="@{data.strTeam}"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
