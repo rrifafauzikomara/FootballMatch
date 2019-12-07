@@ -71,7 +71,8 @@ class TeamOverviewViewModel @Inject constructor(private val repository: TeamsRep
                     i.strCountry,
                     i.strStadiumThumb,
                     i.strTeamJersey,
-                    i.strTeamBanner
+                    i.strTeamBanner,
+                    i.strSport
                 )
             )
         }

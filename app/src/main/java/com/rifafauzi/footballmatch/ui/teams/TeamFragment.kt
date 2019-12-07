@@ -70,10 +70,19 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamViewModel>(), TeamAda
             }
         })
 
+        launchSearchTeam()
+
     }
 
     override fun onTeamsPressed(team: Team, position: Int) {
         launchDetailTeam(team.idTeam)
+    }
+
+    private fun launchSearchTeam() {
+        binding.layoutSearch.setOnClickListener {
+            val action = DetailLeagueFragmentDirections.actionLaunchSearchTeamFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun launchDetailTeam(idTeam: String) {

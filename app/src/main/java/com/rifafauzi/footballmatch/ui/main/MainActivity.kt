@@ -138,6 +138,12 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     showToolbarBackArrow(true)
                     showBottomNavigation(false)
                 }
+                R.id.searchTeamFragment -> {
+                    showToolbar(true)
+                    hideImageSearch()
+                    showToolbarBackArrow(true)
+                    showBottomNavigation(false)
+                }
                 else -> {
                     showToolbar(false)
                     hideImageSearch()

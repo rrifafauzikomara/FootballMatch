@@ -45,5 +45,8 @@ data class Team(
     val strTeamJersey: String?,
 
     @SerializedName("strTeamBanner")
-    val strTeamBanner: String?
+    val strTeamBanner: String?,
+
+    @SerializedName("strSport")
+    var strSport: String?
 )

@@ -150,7 +150,8 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
                     i.strCountry,
                     i.strStadiumThumb,
                     i.strTeamJersey,
-                    i.strTeamBanner
+                    i.strTeamBanner,
+                    i.strSport
                 )
             )
         }
@@ -209,7 +210,8 @@ class DetailMatchViewModel @Inject constructor(private val repository: MatchRepo
                     i.strCountry,
                     i.strStadiumThumb,
                     i.strTeamJersey,
-                    i.strTeamBanner
+                    i.strTeamBanner,
+                    i.strSport
                 )
             )
         }

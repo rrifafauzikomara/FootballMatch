@@ -78,7 +78,8 @@ class PlayerListViewModel @Inject constructor(private val repository: PlayerRepo
                     i.strCountry,
                     i.strStadiumThumb,
                     i.strTeamJersey,
-                    i.strTeamBanner
+                    i.strTeamBanner,
+                    i.strSport
                 )
             )
         }

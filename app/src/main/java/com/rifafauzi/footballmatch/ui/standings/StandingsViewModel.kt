@@ -79,7 +79,8 @@ class StandingsViewModel @Inject constructor(private val repository: StandingsRe
                     i.strCountry,
                     i.strStadiumThumb,
                     i.strTeamJersey,
-                    i.strTeamBanner
+                    i.strTeamBanner,
+                    i.strSport
                 )
             )
         }
