@@ -5,24 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.rifafauzi.footballmatch.databinding.ListFavoritesBinding
+import com.rifafauzi.footballmatch.databinding.ListFavoritesMatchBinding
 import com.rifafauzi.footballmatch.db.FavoriteMatch
 
 /**
  * Created by rrifafauzikomara on 2019-11-26.
  */
  
-class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : ListAdapter<FavoriteMatch, FavoriteAdapter.ViewHolder>(DiffCallback) {
+class FavoriteMatchAdapter(private val listener: OnFavoriteMatchPressedListener) : ListAdapter<FavoriteMatch, FavoriteMatchAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ListFavoritesBinding.inflate(layoutInflater, parent, false)
+        val binding = ListFavoritesMatchBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position), listener, holder.adapterPosition)
 
-    class ViewHolder(private val binding: ListFavoritesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ListFavoritesMatchBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FavoriteMatch, listener: OnFavoriteMatchPressedListener, position: Int) {
             binding.data = model

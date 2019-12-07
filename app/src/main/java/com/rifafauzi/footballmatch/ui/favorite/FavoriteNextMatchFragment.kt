@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rifafauzi.footballmatch.adapter.FavoriteAdapter
+import com.rifafauzi.footballmatch.adapter.FavoriteMatchAdapter
 import com.rifafauzi.footballmatch.databinding.FragmentFavoriteNextMatchBinding
 import com.rifafauzi.footballmatch.db.FavoriteMatch
 import com.rifafauzi.footballmatch.db.database
@@ -19,7 +19,7 @@ import org.jetbrains.anko.db.select
 /**
  * A simple [Fragment] subclass.
  */
-class FavoriteNextMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPressedListener {
+class FavoriteNextMatchFragment : Fragment(), FavoriteMatchAdapter.OnFavoriteMatchPressedListener {
 
     override fun onFavoriteMatchPressed(favoriteMatch: FavoriteMatch, position: Int) {
         val action = FavoriteMatchFragmentDirections.actionFavoriteFragmentToDetailMatchFragment(favoriteMatch.idEvent, favoriteMatch.type)
@@ -27,7 +27,7 @@ class FavoriteNextMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPre
     }
 
     private lateinit var binding: FragmentFavoriteNextMatchBinding
-    private val adapter = FavoriteAdapter(this)
+    private val adapter = FavoriteMatchAdapter(this)
     private var favoriteMatches: MutableList<FavoriteMatch> = mutableListOf()
 
     override fun onCreateView(

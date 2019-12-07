@@ -31,7 +31,7 @@
             android:visibility="@{showData ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/list_teams" />
+            tools:listitem="@layout/list_favorites_team" />
 
         <include
             android:id="@+id/layoutEmptyData"

@@ -2,22 +2,32 @@ package com.rifafauzi.footballmatch.ui.favorite
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rifafauzi.footballmatch.adapter.FavoriteTeamAdapter
 import com.rifafauzi.footballmatch.databinding.FragmentFavoriteTeamBinding
-import com.rifafauzi.footballmatch.db.FavoriteMatch
+import com.rifafauzi.footballmatch.db.FavoriteTeam
+import com.rifafauzi.footballmatch.db.database
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavoriteTeamFragment : Fragment() {
+class FavoriteTeamFragment : Fragment(), FavoriteTeamAdapter.OnFavoriteTeamPressedListener {
+
+    override fun onFavoriteTeamPressed(favoriteTeam: FavoriteTeam, position: Int) {
+        val action = FavoriteMatchFragmentDirections.actionLaunchDetailTeamFragment(favoriteTeam.idTeam)
+        findNavController().navigate(action)
+    }
 
     private lateinit var binding: FragmentFavoriteTeamBinding
-
-    private var favoriteMatches: MutableList<FavoriteMatch> = mutableListOf()
+    private val adapter = FavoriteTeamAdapter(this)
+    private var favoriteTeam: MutableList<FavoriteTeam> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,21 +46,19 @@ class FavoriteTeamFragment : Fragment() {
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(activity)
         binding.rvTeamsFavorite.layoutManager = layoutManager
-//        binding.rvTeamsFavorite.adapter = adapter
+        binding.rvTeamsFavorite.adapter = adapter
     }
 
     private fun showTeam() {
-        favoriteMatches.clear()
-//        context?.database?.use {
-//            val result = select(Favorite.TABLE_FAVORITE)
-//                .whereArgs("(TYPE = {TYPE})",
-//                    "TYPE" to NEXT_MATCH)
-//            val favorite = result.parseList(classParser<Favorite>())
-//            favorites.addAll(favorite)
-//            adapter.submitList(favorites)
-//        }
+        favoriteTeam.clear()
+        context?.database?.use {
+            val result = select(FavoriteTeam.TABLE_TEAM)
+            val favorite = result.parseList(classParser<FavoriteTeam>())
+            favoriteTeam.addAll(favorite)
+            adapter.submitList(favoriteTeam)
+        }
 
-        if (favoriteMatches.isEmpty()) {
+        if (favoriteTeam.isEmpty()) {
             hideData()
             showLayoutEmpty()
         } else {

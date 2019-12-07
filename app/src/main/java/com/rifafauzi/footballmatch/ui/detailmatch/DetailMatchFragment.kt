@@ -36,10 +36,10 @@ import org.jetbrains.anko.db.select
 class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatchViewModel>() {
 
     override fun getLayoutResourceId() = R.layout.fragment_detail_match
-
     override fun getViewModelClass() = DetailMatchViewModel::class.java
 
     private lateinit var idEvent: String
+
     private var type: String? = null
     private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
