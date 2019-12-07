@@ -5,21 +5,146 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.rifafauzi.footballmatch.model.player.Player"/>
+
+        <variable
+            name="showLoading"
+            type="Boolean" />
+
+        <variable
+            name="showData"
+            type="Boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.detailplayer.PlayerDetailFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <RelativeLayout
+                android:visibility="@{showData ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".feature.teamovw.TeamOvwFragment">
+
+                <ImageView
+                    android:id="@+id/imgPlayer"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:contentDescription="@string/image"
+                    tools:src="@drawable/bg_champion"
+                    imageUrl="@{data.strCutout}"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    tools:srcCompat="@tools:sample/avatars"/>
+
+                <TextView
+                    android:id="@+id/playerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="@{data.strPlayer}"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/imgPlayer"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="Ronaldo"/>
+
+                <TextView
+                    android:id="@+id/tvPosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/playerName"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="14sp"
+                    android:text="@{data.strPosition}"
+                    android:textColor="@color/black"
+                    tools:text="Midle"/>
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPosition"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="16sp"
+                    android:text="@{data.strTeam}"
+                    android:textColor="@color/black"
+                    tools:text="Real Madrid"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDate"
+                    android:layout_margin="16dp"
+                    android:elevation="4dp"
+                    android:id="@+id/ovwContainer">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/player_overview"/>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="0.5dp"
+                            android:background="@color/grey_700"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textAlignment="center"
+                            android:id="@+id/playerOverview"
+                            android:textSize="13sp"
+                            android:text="@{data.strDescriptionEN}"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:textColor="@color/black"
+                            tools:text="Player Overview"/>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerDetailMatch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/shimmer_leagues" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.adapter.PlayersAdapter
@@ -12,6 +13,7 @@ import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentPlayerListBinding
 import com.rifafauzi.footballmatch.model.player.Player
+import com.rifafauzi.footballmatch.ui.detailteam.DetailTeamFragmentDirections
 import com.rifafauzi.footballmatch.utils.ID_TEAM
 
 /**
@@ -97,7 +99,8 @@ class PlayerListFragment : BaseFragment<FragmentPlayerListBinding, PlayerListVie
     }
 
     private fun launchDetailPlayer(idPlayer: String) {
-
+        val action = DetailTeamFragmentDirections.actionDetailTeamFragmentToPlayerDetailFragment(idPlayer)
+        findNavController().navigate(action)
     }
 
     private fun refreshData(data: List<Player>) {

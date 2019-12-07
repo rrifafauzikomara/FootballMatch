@@ -57,7 +57,7 @@ class PlayerDetailViewModel @Inject constructor(private val repository: PlayerRe
 
         val players = mutableListOf<Player>()
 
-        for (i in data.allPlayer) {
+        for (i in data.detailPlayer) {
             players.add(
                 Player(
                     i.idPlayer,

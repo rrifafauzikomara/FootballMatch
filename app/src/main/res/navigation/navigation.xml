@@ -153,8 +153,13 @@
     <fragment
         android:id="@+id/playerDetailFragment"
         android:name="com.rifafauzi.footballmatch.ui.detailplayer.PlayerDetailFragment"
-        android:label="fragment_player_detail"
-        tools:layout="@layout/fragment_player_detail" />
+        android:label="Player Detail"
+        tools:layout="@layout/fragment_player_detail" >
+        <argument
+            android:name="idPlayer"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/searchTeamFragment"
         android:name="com.rifafauzi.footballmatch.ui.searchteam.SearchTeamFragment"

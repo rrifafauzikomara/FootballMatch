@@ -84,6 +84,12 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             invalidateOptionsMenu()
             hideToolbarSubtitle()
             when (destination.id) {
+                R.id.playerDetailFragment -> {
+                    showToolbar(true)
+                    hideImageSearch()
+                    showToolbarBackArrow(true)
+                    showBottomNavigation(false)
+                }
                 R.id.detailTeamFragment -> {
                     showToolbar(true)
                     hideImageSearch()
