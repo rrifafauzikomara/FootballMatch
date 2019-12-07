@@ -22,53 +22,58 @@
         android:layout_height="match_parent"
         tools:context=".ui.teams.TeamFragment">
 
-        <include
-            android:id="@+id/layoutSearch"
-            layout="@layout/card_search_team"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTeams"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:visibility="@{showData ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutSearch"
-            tools:listitem="@layout/list_teams" />
+            <include
+                android:id="@+id/layoutSearch"
+                layout="@layout/card_search_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerTeams"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutSearch">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTeams"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layoutSearch"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="@{showData ? View.VISIBLE : View.INVISIBLE}"
+                tools:listitem="@layout/list_teams" />
 
-            <include layout="@layout/shimmer_leagues" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerTeams"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layoutSearch"
+                android:layout_marginTop="16dp"
+                android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}">
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                <include layout="@layout/shimmer_leagues" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </RelativeLayout>
 
         <include
             android:id="@+id/layoutEmptyData"
             layout="@layout/layout_empty_data"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutSearch" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
