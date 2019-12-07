@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifafauzi.footballmatch.adapter.FavoriteAdapter
 import com.rifafauzi.footballmatch.databinding.FragmentFavoriteNextMatchBinding
-import com.rifafauzi.footballmatch.db.Favorite
+import com.rifafauzi.footballmatch.db.FavoriteMatch
 import com.rifafauzi.footballmatch.db.database
 import com.rifafauzi.footballmatch.utils.NEXT_MATCH
 import org.jetbrains.anko.db.classParser
@@ -21,14 +21,14 @@ import org.jetbrains.anko.db.select
  */
 class FavoriteNextMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPressedListener {
 
-    override fun onFavoriteMatchPressed(favorite: Favorite, position: Int) {
-        val action = FavoriteMatchFragmentDirections.actionFavoriteFragmentToDetailMatchFragment(favorite.idEvent, favorite.type)
+    override fun onFavoriteMatchPressed(favoriteMatch: FavoriteMatch, position: Int) {
+        val action = FavoriteMatchFragmentDirections.actionFavoriteFragmentToDetailMatchFragment(favoriteMatch.idEvent, favoriteMatch.type)
         findNavController().navigate(action)
     }
 
     private lateinit var binding: FragmentFavoriteNextMatchBinding
     private val adapter = FavoriteAdapter(this)
-    private var favorites: MutableList<Favorite> = mutableListOf()
+    private var favoriteMatches: MutableList<FavoriteMatch> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,17 +50,17 @@ class FavoriteNextMatchFragment : Fragment(), FavoriteAdapter.OnFavoriteMatchPre
     }
 
     private fun showNextMatch() {
-        favorites.clear()
+        favoriteMatches.clear()
         context?.database?.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavoriteMatch.TABLE_FAVORITE)
                 .whereArgs("(TYPE = {TYPE})",
                     "TYPE" to NEXT_MATCH)
-            val favorite = result.parseList(classParser<Favorite>())
-            favorites.addAll(favorite)
-            adapter.submitList(favorites)
+            val favorite = result.parseList(classParser<FavoriteMatch>())
+            favoriteMatches.addAll(favorite)
+            adapter.submitList(favoriteMatches)
         }
 
-        if (favorites.isEmpty()) {
+        if (favoriteMatches.isEmpty()) {
             hideData()
             showLayoutEmpty()
         } else {

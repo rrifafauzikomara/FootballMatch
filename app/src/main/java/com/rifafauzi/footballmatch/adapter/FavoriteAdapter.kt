@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rifafauzi.footballmatch.databinding.ListFavoritesBinding
-import com.rifafauzi.footballmatch.db.Favorite
+import com.rifafauzi.footballmatch.db.FavoriteMatch
 
 /**
  * Created by rrifafauzikomara on 2019-11-26.
  */
  
-class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : ListAdapter<Favorite, FavoriteAdapter.ViewHolder>(DiffCallback) {
+class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : ListAdapter<FavoriteMatch, FavoriteAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -24,7 +24,7 @@ class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : Li
 
     class ViewHolder(private val binding: ListFavoritesBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(model: Favorite, listener: OnFavoriteMatchPressedListener, position: Int) {
+        fun bind(model: FavoriteMatch, listener: OnFavoriteMatchPressedListener, position: Int) {
             binding.data = model
             binding.root.setOnClickListener {
                 listener.onFavoriteMatchPressed(model, position)
@@ -37,12 +37,12 @@ class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : Li
     }
 
     companion object {
-        val DiffCallback = object : DiffUtil.ItemCallback<Favorite>(){
-            override fun areItemsTheSame(oldItem: Favorite, newItem: Favorite): Boolean {
+        val DiffCallback = object : DiffUtil.ItemCallback<FavoriteMatch>(){
+            override fun areItemsTheSame(oldItem: FavoriteMatch, newItem: FavoriteMatch): Boolean {
                 return oldItem.dateEvent == newItem.dateEvent
             }
 
-            override fun areContentsTheSame(oldItem: Favorite, newItem: Favorite): Boolean {
+            override fun areContentsTheSame(oldItem: FavoriteMatch, newItem: FavoriteMatch): Boolean {
                 return oldItem == newItem
             }
 
@@ -50,7 +50,7 @@ class FavoriteAdapter(private val listener: OnFavoriteMatchPressedListener) : Li
     }
 
     interface OnFavoriteMatchPressedListener {
-        fun onFavoriteMatchPressed(favorite: Favorite, position: Int)
+        fun onFavoriteMatchPressed(favoriteMatch: FavoriteMatch, position: Int)
     }
 
 }

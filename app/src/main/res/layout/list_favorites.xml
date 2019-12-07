@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="com.rifafauzi.footballmatch.db.Favorite" />
+            type="com.rifafauzi.footballmatch.db.FavoriteMatch" />
     </data>
 
     <RelativeLayout

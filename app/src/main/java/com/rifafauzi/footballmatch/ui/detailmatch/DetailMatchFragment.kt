@@ -21,7 +21,7 @@ import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.base.BaseFragment
 import com.rifafauzi.footballmatch.common.Result
 import com.rifafauzi.footballmatch.databinding.FragmentDetailMatchBinding
-import com.rifafauzi.footballmatch.db.Favorite
+import com.rifafauzi.footballmatch.db.FavoriteMatch
 import com.rifafauzi.footballmatch.db.database
 import com.rifafauzi.footballmatch.model.match.Match
 import com.rifafauzi.footballmatch.utils.NEXT_MATCH
@@ -180,10 +180,10 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
 
     private fun favoriteState(){
         context?.database?.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavoriteMatch.TABLE_FAVORITE)
                 .whereArgs("(ID_EVENT = {id})",
                     "id" to idEvent)
-            val favorite = result.parseList(classParser<Favorite>())
+            val favorite = result.parseList(classParser<FavoriteMatch>())
             if (favorite.isNotEmpty()) isFavorite = true
         }
     }
@@ -192,29 +192,29 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         try {
             context?.database?.use {
                 insert(
-                    Favorite.TABLE_FAVORITE,
-                    Favorite.ID_EVENT to idEvent,
-                    Favorite.LEAGUE_NAME to binding.data?.strLeague,
-                    Favorite.DATE_EVENT to binding.data?.dateEvent,
-                    Favorite.HOME_TEAM_BADGE to imageHome,
-                    Favorite.HOME_TEAM_NAME to binding.data?.strHomeTeam,
-                    Favorite.HOME_GOAL_DETAIL to binding.data?.strHomeGoalDetails,
-                    Favorite.HOME_SCORE to binding.data?.intHomeScore,
-                    Favorite.AWAY_SCORE to binding.data?.intAwayScore,
-                    Favorite.AWAY_TEAM_BADGE to imageAway,
-                    Favorite.AWAY_TEAM_NAME to binding.data?.strAwayTeam,
-                    Favorite.AWAY_GOAL_DETAIL to binding.data?.strAwayGoalDetails,
-                    Favorite.HOME_LINEUP_GOAL_KEEPER to binding.data?.strHomeLineupGoalkeeper,
-                    Favorite.AWAY_LINEUP_GOAL_KEEPER to binding.data?.strAwayLineupGoalkeeper,
-                    Favorite.HOME_LINEUP_DEFENSE to binding.data?.strHomeLineupDefense,
-                    Favorite.AWAY_LINEUP_DEFENSE to binding.data?.strAwayLineupDefense,
-                    Favorite.HOME_LINEUP_MIDFIELD to binding.data?.strHomeLineupMidfield,
-                    Favorite.AWAY_LINEUP_MIDFIELD to binding.data?.strAwayLineupMidfield,
-                    Favorite.HOME_LINEUP_FORWARD to binding.data?.strHomeLineupForward,
-                    Favorite.AWAY_LINEUP_FORWARD to binding.data?.strAwayLineupForward,
-                    Favorite.HOME_LINEUP_SUBSTITUTES to binding.data?.strHomeLineupSubstitutes,
-                    Favorite.AWAY_LINEUP_SUBSTITUTES to binding.data?.strAwayLineupSubstitutes,
-                    Favorite.TYPE to type
+                    FavoriteMatch.TABLE_FAVORITE,
+                    FavoriteMatch.ID_EVENT to idEvent,
+                    FavoriteMatch.LEAGUE_NAME to binding.data?.strLeague,
+                    FavoriteMatch.DATE_EVENT to binding.data?.dateEvent,
+                    FavoriteMatch.HOME_TEAM_BADGE to imageHome,
+                    FavoriteMatch.HOME_TEAM_NAME to binding.data?.strHomeTeam,
+                    FavoriteMatch.HOME_GOAL_DETAIL to binding.data?.strHomeGoalDetails,
+                    FavoriteMatch.HOME_SCORE to binding.data?.intHomeScore,
+                    FavoriteMatch.AWAY_SCORE to binding.data?.intAwayScore,
+                    FavoriteMatch.AWAY_TEAM_BADGE to imageAway,
+                    FavoriteMatch.AWAY_TEAM_NAME to binding.data?.strAwayTeam,
+                    FavoriteMatch.AWAY_GOAL_DETAIL to binding.data?.strAwayGoalDetails,
+                    FavoriteMatch.HOME_LINEUP_GOAL_KEEPER to binding.data?.strHomeLineupGoalkeeper,
+                    FavoriteMatch.AWAY_LINEUP_GOAL_KEEPER to binding.data?.strAwayLineupGoalkeeper,
+                    FavoriteMatch.HOME_LINEUP_DEFENSE to binding.data?.strHomeLineupDefense,
+                    FavoriteMatch.AWAY_LINEUP_DEFENSE to binding.data?.strAwayLineupDefense,
+                    FavoriteMatch.HOME_LINEUP_MIDFIELD to binding.data?.strHomeLineupMidfield,
+                    FavoriteMatch.AWAY_LINEUP_MIDFIELD to binding.data?.strAwayLineupMidfield,
+                    FavoriteMatch.HOME_LINEUP_FORWARD to binding.data?.strHomeLineupForward,
+                    FavoriteMatch.AWAY_LINEUP_FORWARD to binding.data?.strAwayLineupForward,
+                    FavoriteMatch.HOME_LINEUP_SUBSTITUTES to binding.data?.strHomeLineupSubstitutes,
+                    FavoriteMatch.AWAY_LINEUP_SUBSTITUTES to binding.data?.strAwayLineupSubstitutes,
+                    FavoriteMatch.TYPE to type
                 )
             }
             snackBar(resources.getString(R.string.add_to_favorite))
@@ -227,7 +227,7 @@ class DetailMatchFragment : BaseFragment<FragmentDetailMatchBinding, DetailMatch
         try {
             context?.database?.use {
                 delete(
-                    Favorite.TABLE_FAVORITE,
+                    FavoriteMatch.TABLE_FAVORITE,
                     "(ID_EVENT = {id})",
                     "id" to idEvent
                 )

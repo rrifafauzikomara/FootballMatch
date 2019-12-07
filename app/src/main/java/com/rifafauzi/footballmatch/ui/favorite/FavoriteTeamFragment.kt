@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rifafauzi.footballmatch.R
-import com.rifafauzi.footballmatch.databinding.FragmentFavoriteNextMatchBinding
 import com.rifafauzi.footballmatch.databinding.FragmentFavoriteTeamBinding
-import com.rifafauzi.footballmatch.db.Favorite
+import com.rifafauzi.footballmatch.db.FavoriteMatch
 
 /**
  * A simple [Fragment] subclass.
@@ -19,7 +17,7 @@ class FavoriteTeamFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteTeamBinding
 
-    private var favorites: MutableList<Favorite> = mutableListOf()
+    private var favoriteMatches: MutableList<FavoriteMatch> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +40,7 @@ class FavoriteTeamFragment : Fragment() {
     }
 
     private fun showTeam() {
-        favorites.clear()
+        favoriteMatches.clear()
 //        context?.database?.use {
 //            val result = select(Favorite.TABLE_FAVORITE)
 //                .whereArgs("(TYPE = {TYPE})",
@@ -52,7 +50,7 @@ class FavoriteTeamFragment : Fragment() {
 //            adapter.submitList(favorites)
 //        }
 
-        if (favorites.isEmpty()) {
+        if (favoriteMatches.isEmpty()) {
             hideData()
             showLayoutEmpty()
         } else {

@@ -4,7 +4,7 @@ package com.rifafauzi.footballmatch.db
  * Created by rrifafauzikomara on 2019-11-26.
  */
  
-data class Favorite(
+data class FavoriteMatch(
     val id: Long,
     val idEvent: String,
     val strLeague: String?,
