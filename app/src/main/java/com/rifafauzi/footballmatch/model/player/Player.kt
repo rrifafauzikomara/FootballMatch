@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  
 data class Player(
     @SerializedName("idPlayer")
-    val idPlayer: String?,
+    val idPlayer: String,
 
     @SerializedName("idTeam")
     val idTeam: String?,

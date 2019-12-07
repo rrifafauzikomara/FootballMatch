@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:fitsSystemWindows="true"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/bg_team"
             android:visibility="@{showData ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 app:tabGravity="fill"
                 app:tabMode="fixed"
+                app:tabBackground="@color/colorPrimary"
                 app:tabIndicatorColor="@color/colorAccent"
                 app:tabSelectedTextColor="@color/white" />
 

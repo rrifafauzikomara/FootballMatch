@@ -92,7 +92,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stadiumName"
                     tools:ignore="contentDescription"
-                    android:src="@drawable/ic_no_data"
+                    tools:srcCompat="@drawable/ic_no_data"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
@@ -108,18 +108,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageStadium"
                     tools:text="Stadium Location" />
 
-
                 <TextView
                     android:id="@+id/stadiumCountry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="16dp"
                     android:text="@{data.strCountry}"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageStadium"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stadiumLocation"
                     tools:text="Country" />
 
                 <TextView

@@ -99,7 +99,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="16dp"
                 imageUrl="@{data.strBanner}"
-                android:src="@drawable/ic_no_data"
+                tools:srcCompat="@drawable/ic_no_data"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="contentDescription"

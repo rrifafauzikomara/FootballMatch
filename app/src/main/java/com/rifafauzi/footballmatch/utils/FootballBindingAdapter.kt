@@ -13,14 +13,24 @@ import com.rifafauzi.footballmatch.R
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
-    imgUrl?.let {
-        val imgUri = it.toUri().buildUpon().scheme("https").build()
+    if (imgUrl.isNullOrEmpty()) {
         Glide.with(imgView.context)
-            .load(imgUri)
+            .load(R.drawable.ic_no_data)
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.ic_place_holder)
                     .error(R.drawable.ic_error))
             .into(imgView)
+    } else {
+        imgUrl.let {
+            val imgUri = it.toUri().buildUpon().scheme("https").build()
+            Glide.with(imgView.context)
+                .load(imgUri)
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.ic_place_holder)
+                        .error(R.drawable.ic_error))
+                .into(imgView)
+        }
     }
 }
