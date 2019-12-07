@@ -122,6 +122,12 @@ class PlayerListViewModel @Inject constructor(private val repository: PlayerRepo
 
         val players = mutableListOf<Player>()
 
+        // check if data from api is null
+        if (data.allPlayer.isNullOrEmpty()) {
+            setResultListPlayer(Result.NoData())
+            return mutableListOf()
+        }
+
         for (i in data.allPlayer) {
             players.add(
                 Player(

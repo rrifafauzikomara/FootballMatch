@@ -60,10 +60,12 @@ class PlayerListFragment : BaseFragment<FragmentPlayerListBinding, PlayerListVie
             it?.let {
                 when (it) {
                     is Result.Loading -> {
+                        hideLayoutEmpty()
                         hidePlayers()
                         showLoading()
                     }
                     is Result.HasData -> {
+                        hideLayoutEmpty()
                         showPlayers()
                         hideLoading()
                         refreshData(it.data)
@@ -71,14 +73,16 @@ class PlayerListFragment : BaseFragment<FragmentPlayerListBinding, PlayerListVie
                     is Result.NoData -> {
                         hidePlayers()
                         hideLoading()
-                        longSnackBar(resources.getString(R.string.empty_data))
+                        showLayoutEmpty()
                     }
                     is Result.Error -> {
+                        hideLayoutEmpty()
                         hidePlayers()
                         hideLoading()
                         longSnackBar(resources.getString(R.string.unknown_error))
                     }
                     is Result.NoInternetConnection -> {
+                        hideLayoutEmpty()
                         hidePlayers()
                         hideLoading()
                         longSnackBar(resources.getString(R.string.no_connection))
@@ -120,6 +124,14 @@ class PlayerListFragment : BaseFragment<FragmentPlayerListBinding, PlayerListVie
 
     private fun hidePlayers() {
         binding.showData = false
+    }
+
+    private fun showLayoutEmpty() {
+        binding.layoutEmptyData.visibility = View.VISIBLE
+    }
+
+    private fun hideLayoutEmpty() {
+        binding.layoutEmptyData.visibility = View.GONE
     }
 
 }

@@ -56,6 +56,13 @@ class TeamViewModel @Inject constructor(private val repository: TeamsRepository)
 
     private fun transformData(data: TeamResponse) : List<Team> {
         val teams = mutableListOf<Team>()
+
+        // check if data from api is null
+        if (data.teams.isNullOrEmpty()) {
+            setResultListTeams(Result.NoData())
+            return mutableListOf()
+        }
+
         for (i in data.teams) {
             teams.add(
                 Team(
