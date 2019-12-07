@@ -113,7 +113,8 @@ class DetailMatchViewModelTest {
                     dataHome.strCountry,
                     dataHome.strStadiumThumb,
                     dataHome.strTeamJersey,
-                    dataHome.strTeamBanner
+                    dataHome.strTeamBanner,
+                    dataHome.strSport
                 )
             )
         )
@@ -142,7 +143,8 @@ class DetailMatchViewModelTest {
                     dataAway.strCountry,
                     dataAway.strStadiumThumb,
                     dataAway.strTeamJersey,
-                    dataAway.strTeamBanner
+                    dataAway.strTeamBanner,
+                    dataAway.strSport
                 )
             )
         )

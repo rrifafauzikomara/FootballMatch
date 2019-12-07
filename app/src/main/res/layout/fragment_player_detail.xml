@@ -42,7 +42,7 @@
                     android:layout_height="140dp"
                     android:contentDescription="@string/image"
                     tools:src="@drawable/bg_champion"
-                    imageUrl="@{data.strCutout}"
+                    imageUrl="@{data.strThumb}"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
                     tools:srcCompat="@tools:sample/avatars"/>

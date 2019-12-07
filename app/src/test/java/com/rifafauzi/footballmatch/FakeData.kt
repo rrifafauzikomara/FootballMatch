@@ -209,7 +209,8 @@ object FakeData {
                 "Argentina",
                 "https://www.thesportsdb.com/images/media/team/stadium/xxqquu1424078101.jpg",
                 "https://www.thesportsdb.com/images/media/team/jersey/rswyvp1423783959.png",
-                null
+                null,
+                "Soccer"
             ),
             Team(
                 "135162",
@@ -224,7 +225,8 @@ object FakeData {
                 "Argentina",
                 null,
                 "https://www.thesportsdb.com/images/media/team/jersey/swvyvu1423784034.png",
-                null
+                null,
+                "Soccer"
             )
         )
     }
