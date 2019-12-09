@@ -28,37 +28,41 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
-                android:visibility="@{showData ? View.VISIBLE : View.GONE}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="@{showData ? View.VISIBLE : View.GONE}"
                 tools:context=".feature.teamovw.TeamOvwFragment">
 
                 <ImageView
                     android:id="@+id/imgPlayer"
+                    imageUrl="@{data.strThumb}"
                     android:layout_width="120dp"
                     android:layout_height="140dp"
-                    android:contentDescription="@string/image"
-                    tools:src="@drawable/bg_champion"
-                    imageUrl="@{data.strThumb}"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
-                    tools:srcCompat="@tools:sample/avatars"/>
+                    android:contentDescription="@string/image"
+                    tools:src="@drawable/bg_champion"
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/playerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
-                    android:text="@{data.strPlayer}"
-                    android:layout_marginTop="8dp"
                     android:layout_below="@id/imgPlayer"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@{data.strPlayer}"
                     android:textColor="@color/black"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    tools:text="Ronaldo"/>
+                    tools:text="Ronaldo" />
 
                 <TextView
                     android:id="@+id/tvPosition"
@@ -66,30 +70,30 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/playerName"
                     android:layout_centerHorizontal="true"
-                    android:textSize="14sp"
                     android:text="@{data.strPosition}"
                     android:textColor="@color/black"
-                    tools:text="Midle"/>
+                    android:textSize="14sp"
+                    tools:text="Midle" />
 
                 <TextView
                     android:id="@+id/tvDate"
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvPosition"
                     android:layout_centerHorizontal="true"
-                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
                     android:text="@{data.strTeam}"
                     android:textColor="@color/black"
-                    tools:text="Real Madrid"/>
+                    android:textSize="16sp"
+                    tools:text="Real Madrid" />
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/ovwContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvDate"
                     android:layout_margin="16dp"
-                    android:elevation="4dp"
-                    android:id="@+id/ovwContainer">
+                    android:elevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,29 +105,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="16sp"
+                            android:text="@string/player_overview"
                             android:textColor="@color/black"
-                            android:text="@string/player_overview"/>
+                            android:textSize="16sp" />
 
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="0.5dp"
-                            android:background="@color/grey_700"
+                            android:layout_marginLeft="8dp"
                             android:layout_marginRight="8dp"
-                            android:layout_marginLeft="8dp"/>
+                            android:background="@color/grey_700" />
 
                         <TextView
+                            android:id="@+id/playerOverview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:textAlignment="center"
-                            android:id="@+id/playerOverview"
-                            android:textSize="13sp"
-                            android:text="@{data.strDescriptionEN}"
-                            android:layout_marginRight="8dp"
                             android:layout_marginLeft="8dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginRight="8dp"
+                            android:text="@{data.strDescriptionEN}"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
-                            tools:text="Player Overview"/>
+                            android:textSize="13sp"
+                            tools:text="Player Overview" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

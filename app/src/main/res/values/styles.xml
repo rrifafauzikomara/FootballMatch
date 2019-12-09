@@ -2,9 +2,17 @@
 
     <!-- Base application theme. -->
 
+    <style name="Football.Theme" parent="Theme.MaterialComponents.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="Football.Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:background">@color/colorPrimary</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/white</item>z
     </style>
 
 </resources>

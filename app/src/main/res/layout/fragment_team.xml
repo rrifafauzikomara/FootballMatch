@@ -36,10 +36,10 @@
                 android:id="@+id/layoutSearch"
                 layout="@layout/card_search_team"
                 android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginTop="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTeams"
@@ -69,6 +69,7 @@
             android:id="@+id/layoutEmptyData"
             layout="@layout/layout_empty_data"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
