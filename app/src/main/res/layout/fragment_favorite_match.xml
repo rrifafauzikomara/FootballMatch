@@ -19,7 +19,7 @@
             android:layout_gravity="top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             app:tabBackground="@color/colorPrimary"
             app:tabSelectedTextColor="@color/white"
             app:tabIndicatorColor="@color/colorAccent"
