@@ -4,34 +4,34 @@ All submission KADE (Kotlin Android Developer Expert) class from <a href="https:
 
 This repo using API from <a href="https://www.thesportsdb.com/">The Sport DB</a>
 
-### Screenshot
+## Screenshot
 
 <pre>
-<img src="screenshot/final/1.png" width="250" height="460">     <img src="screenshot/final/2.png" width="250" height="460">     <img src="screenshot/final/3.png" width="250" height="460">     <img src="screenshot/final/4.png" width="250" height="460">     <img src="screenshot/final/5.png" width="250" height="460">     <img src="screenshot/final/6.png" width="250" height="460">
+<img src="image/image1.png" width="250" height="460">     <img src="image/image2.png" width="250" height="460">     <img src="image/image3.png" width="250" height="460">     <img src="image/image4.png" width="250" height="460">     <img src="image/image5.png" width="250" height="460">
 </pre>
 
-## Branch master (Submission 1)
-### Feature
+### Branch master (Submission 1)
+#### Feature
 
 * [x] 
 
-## Branch submission-2 (Submission 2)
-### Feature
+### Branch submission-2 (Submission 2)
+#### Feature
 
 * [x] 
 
-## Branch submission-3 (Submission 3)
-### Feature
+### Branch submission-3 (Submission 3)
+#### Feature
 
 * [x] 
 
-## Branch submission-4 (Submission 4)
-### Feature
+### Branch submission-4 (Submission 4)
+#### Feature
 
 * [x] 
 
-## Branch submission-5 (Final Project)
-### Feature
+### Branch submission-5 (Final Project)
+#### Feature
 
 * [x] 
 
