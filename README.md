@@ -11,29 +11,61 @@ This repo using API from <a href="https://www.thesportsdb.com/">The Sport DB</a>
 </pre>
 
 ### Branch master (Submission 1)
-#### Feature
+#### Tech
 
-* [x] 
+* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+* [x] Repository Pattern
+* [x] RxJava
+* [x] Dagger2
+* [x] Shimmer
+* [x] Retrofit
 
 ### Branch submission-2 (Submission 2)
-#### Feature
+#### Tech
 
-* [x] 
+* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+* [x] Repository Pattern
+* [x] RxJava
+* [x] Dagger2
+* [x] Shimmer
+* [x] Retrofit
 
 ### Branch submission-3 (Submission 3)
-#### Feature
+#### Tech
 
-* [x] 
+* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+* [x] Repository Pattern
+* [x] RxJava
+* [x] Dagger2
+* [x] Shimmer
+* [x] Retrofit
+* [x] Anko SQLite
 
 ### Branch submission-4 (Submission 4)
-#### Feature
+#### Tech
 
-* [x] 
+* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+* [x] Repository Pattern
+* [x] RxJava
+* [x] Dagger2
+* [x] Shimmer
+* [x] Retrofit
+* [x] Anko SQLite
+* [x] Unit Testing (Mockito)
+* [x] Instrumentation Test (Espresso Idling Resource)
 
 ### Branch submission-5 (Final Project)
-#### Feature
+#### Tech
 
-* [x] 
+* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+* [x] Repository Pattern
+* [x] RxJava
+* [x] Dagger2
+* [x] Shimmer
+* [x] Retrofit
+* [x] Anko SQLite
+* [x] Unit Testing (Mockito)
+* [x] Instrumentation Test (Espresso Idling Resource)
 
 ### Todo
 
