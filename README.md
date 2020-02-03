@@ -13,12 +13,7 @@ This repo using API from <a href="https://www.thesportsdb.com/">The Sport DB</a>
 ### Branch master (Submission 1)
 #### Tech
 
-* [x] Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
-* [x] Repository Pattern
-* [x] RxJava
-* [x] Dagger2
-* [x] Shimmer
-* [x] Retrofit
+* [x] Anko Layouts
 
 ### Branch submission-2 (Submission 2)
 #### Tech
