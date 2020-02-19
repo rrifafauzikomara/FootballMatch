@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -13,16 +12,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.rifafauzi.footballmatch.R
 import com.rifafauzi.footballmatch.databinding.ActivityMainBinding
 import dagger.android.AndroidInjection
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
-
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
+class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var binding: ActivityMainBinding
