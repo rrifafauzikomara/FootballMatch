@@ -12,7 +12,6 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -38,7 +37,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass())
+        mViewModel = ViewModelProvider(this, viewModelFactory).get(getViewModelClass())
         mViewDataBinding =
             DataBindingUtil.inflate(inflater, getLayoutResourceId(), container, false)
         mViewDataBinding.lifecycleOwner = this
