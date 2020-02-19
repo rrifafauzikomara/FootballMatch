@@ -64,6 +64,7 @@ This repo using API from <a href="https://www.thesportsdb.com/">The Sport DB</a>
 
 ### Todo
 
+* [ ] Flavor
 * [ ] Publish to Play Store
 
 ## Author
