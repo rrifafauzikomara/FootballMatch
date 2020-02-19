@@ -2,6 +2,7 @@ package com.rifafauzi.footballmatch.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.rifafauzi.footballmatch.di.factory.ViewModelFactory
 import com.rifafauzi.footballmatch.ui.detailleague.DetailLeagueViewModel
 import com.rifafauzi.footballmatch.ui.detailmatch.DetailMatchViewModel
 import com.rifafauzi.footballmatch.ui.leagues.LeaguesViewModel
@@ -9,7 +10,6 @@ import com.rifafauzi.footballmatch.ui.nextmatch.NextMatchViewModel
 import com.rifafauzi.footballmatch.ui.previousmatch.PreviousMatchViewModel
 import com.rifafauzi.footballmatch.ui.searchmatch.SearchMatchViewModel
 import com.rifafauzi.footballmatch.utils.ViewModelKey
-import com.rifafauzi.footballmatch.viewmodel.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
