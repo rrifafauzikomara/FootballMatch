@@ -4,6 +4,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/rrifafauzikomara/FootballMatch?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/rrifafauzikomara/FootballMatch?style=social)
 
+![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)
 ![platform](https://img.shields.io/badge/platform-android-green.svg)
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/rrifafauzikomara/FootballMatch)
 
